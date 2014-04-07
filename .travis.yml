@@ -1,2 +1,2 @@
 language: objective-c
-script: xcodebuild -project MDCSwipeToChoose.xcodeproj -scheme MDCSwipeToChoose -sdk iphonesimulator7.1 test
+script: xcodebuild -project MDCSwipeToChoose.xcodeproj -scheme MDCSwipeToChoose -sdk iphonesimulator test
