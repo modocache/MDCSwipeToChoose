@@ -5,7 +5,7 @@ Pod::Spec.new do |s|
   s.homepage     = 'https://github.com/modocache/MDCSwipeToChoose'
   s.license      = 'MIT'
   s.author       = { 'modocache' => 'modocache@gmail.com' }
-  s.source       = { git: 'https://github.com/modocache/MDCSwipeToChoose.git', tag: "v#{s.version}" }
+  s.source       = { :git => 'https://github.com/modocache/MDCSwipeToChoose.git', :tag => "v#{s.version}" }
   s.source_files = 'MDCSwipeToChoose/**/*.{h,m}'
   s.public_header_files = 'MDCSwipeToChoose/Public/**/*.{h,m}'
   s.requires_arc = true
