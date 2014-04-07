@@ -14,7 +14,7 @@ Swipe to "like" or "dislike" any view, just like Tinder.app. Build a flashcard a
 Place the following in your Podfile and run `pod install`:
 
 ```objc
-pod 'MDCSwipeToChoose', git: 'https://github.com/modocache/MDCSwipeToChoose'
+pod 'MDCSwipeToChoose'
 ```
 
 ## How to Use
