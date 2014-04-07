@@ -1,0 +1,14 @@
+PODS:
+  - MDCSwipeToChoose (0.1.0)
+
+DEPENDENCIES:
+  - MDCSwipeToChoose (from `../../`)
+
+EXTERNAL SOURCES:
+  MDCSwipeToChoose:
+    :path: ../../
+
+SPEC CHECKSUMS:
+  MDCSwipeToChoose: 5d24139ca9e8c25c683a55975aa92d18fd2eafac
+
+COCOAPODS: 0.29.0

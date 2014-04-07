@@ -1,0 +1,6 @@
+language: objective-c
+before_install: gem install cocoapods
+script:
+  - xcodebuild -project MDCSwipeToChoose.xcodeproj -scheme MDCSwipeToChoose -sdk iphonesimulator test
+  - cd Examples/LikeOrNope && pod install
+  - xcodebuild -workspace Examples/LikedOrNope/LikedOrNope.xcworkspace -scheme LikedOrNope -sdk iphonesimulator build
