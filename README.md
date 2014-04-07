@@ -19,7 +19,7 @@ pod 'MDCSwipeToChoose', git: 'https://github.com/modocache/MDCSwipeToChoose'
 
 ## How to Use
 
-Check out the sample app for an example of how to use `MDCSwipeToChooseView` to build the UI in the GIF above.
+Check out [the sample app](https://github.com/modocache/MDCSwipeToChoose/tree/master/Examples/LikedOrNope) for an example of how to use `MDCSwipeToChooseView` to build the UI in the GIF above.
 
 Every public class contains documentation in its header file.
 
@@ -76,7 +76,7 @@ The following is an example of how you can use `MDCSwipeToChooseView` to display
 
 You don't have to use a subclass of `MDCChooseView`. You can use the `mdc_swipeToChooseSetup:` method on any `UIView` to enable swipe-to-choose.
 
-In the following example, we adjust the opacity of a `UIWebView` when its panned left and right.
+In the following example, we adjust the opacity of a `UIWebView` when it's panned left and right.
 
 ```
 #import <MDCSwipeToChoose/MDCSwipeToChoose.h>
