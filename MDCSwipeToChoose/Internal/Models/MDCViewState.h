@@ -24,9 +24,24 @@
 
 #import <UIKit/UIKit.h>
 
+typedef CGFloat MDCRotationDirection;
+extern const MDCRotationDirection MDCRotationAwayFromCenter;
+extern const MDCRotationDirection MDCRotationTowardsCenter;
+
 @interface MDCViewState : NSObject
 
+/*!
+ * The center of the view when the pan gesture began.
+ */
 @property (nonatomic, assign) CGPoint originalCenter;
-@property (nonatomic, assign) CGFloat rotationDirection;
+
+/*!
+ * When the pan gesture originates at the top half of the view, the view rotates
+ * away from its original center, and this property takes on a value of 1.
+ *
+ * When the pan gesture originates at the bottom half, the view rotates toward its
+ * original center, and this takes on a value of -1.
+ */
+@property (nonatomic, assign) MDCRotationDirection rotationDirection;
 
 @end

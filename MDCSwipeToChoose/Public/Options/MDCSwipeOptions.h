@@ -56,6 +56,18 @@ typedef void (^MDCSwipeToChooseOnChosenBlock)(MDCSwipeResult *state);
 @property (nonatomic, assign) UIViewAnimationOptions swipeCancelledAnimationOptions;
 
 /*!
+ * THe duration of the animation that moves a view to its threshold, caused when `mdc_swipe:`
+ * is called. A default value is provided in the `-init` method.
+ */
+@property (nonatomic, assign) NSTimeInterval swipeAnimationDuration;
+
+/*!
+ * Animation options for the animation that moves a view to its threshold, caused when
+ * `mdc_swipe:` is called. A default value is provided in the `-init` method.
+ */
+@property (nonatomic, assign) UIViewAnimationOptions swipeAnimationOptions;
+
+/*!
  * The distance, in pixels, that a view must be panned in order to constitue a selection.
  * For example, if the `threshold` is `100.f`, panning the view `101.f` pixels to the right
  * is considered a selection in the `MDCSwipeDirectionRight` direction. A default value is

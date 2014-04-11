@@ -16,7 +16,7 @@ You may view slides on some the architecture decisions that went into this libra
 Place the following in your Podfile and run `pod install`:
 
 ```objc
-pod 'MDCSwipeToChoose'
+pod "MDCSwipeToChoose"
 ```
 
 ## How to Use
@@ -34,7 +34,7 @@ The following is an example of how you can use `MDCSwipeToChooseView` to display
 
 // ... in a view controller
 
-#pragma mark - Creating and Customizing a MDCSwipeToVChooseView
+#pragma mark - Creating and Customizing a MDCSwipeToChooseView
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -74,13 +74,19 @@ The following is an example of how you can use `MDCSwipeToChooseView` to display
 }
 ```
 
+As of version 0.2.0, you may also swipe a view programmatically:
+
+```objc
+[self.swipeToChooseView mdc_swipe:MDCSwipeDirectionLeft];
+```
+
 ## More Generic Swiping
 
 You don't have to use a subclass of `MDCChooseView`. You can use the `mdc_swipeToChooseSetup:` method on any `UIView` to enable swipe-to-choose.
 
 In the following example, we adjust the opacity of a `UIWebView` when it's panned left and right.
 
-```
+```objc
 #import <MDCSwipeToChoose/MDCSwipeToChoose.h>
 
 // ... in a view controller

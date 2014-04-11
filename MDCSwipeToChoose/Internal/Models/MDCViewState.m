@@ -24,6 +24,9 @@
 
 #import "MDCViewState.h"
 
+const MDCRotationDirection MDCRotationAwayFromCenter = 1.f;
+const MDCRotationDirection MDCRotationTowardsCenter = -1.f;
+
 @implementation MDCViewState
 
 @end

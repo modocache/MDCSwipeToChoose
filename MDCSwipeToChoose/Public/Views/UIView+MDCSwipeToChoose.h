@@ -23,6 +23,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MDCSwipeDirection.h"
 
 @class MDCSwipeOptions;
 
@@ -40,7 +41,21 @@
  * Adds swipe-to-choose functionality to an instance of `UIView`.
  * You may customize the selection threshold and other parameters by
  * setting the corresponding settings on the `options` argument.
+ * Passing `nil` for the `options` parameter configures the view with
+ * the default set of options.
  */
 - (void)mdc_swipeToChooseSetup:(MDCSwipeOptions *)options;
+
+/*!
+ * Programmatically swipes the view in the direction specified.
+ *
+ * Specifying a direction of MDCSwipeDirectionNone swipes the view
+ * if the swipe threshold is currently exceeded, and returns it to
+ * its original position otherwise.
+ *
+ * If you haven't called `mdc_swipeToChooseSetup:` already, this will call
+ * that method and perform setup using the default set of options.
+ */
+- (void)mdc_swipe:(MDCSwipeDirection)direction;
 
 @end
