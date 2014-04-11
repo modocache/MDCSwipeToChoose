@@ -9,6 +9,6 @@ EXTERNAL SOURCES:
     :path: ../../
 
 SPEC CHECKSUMS:
-  MDCSwipeToChoose: 5d24139ca9e8c25c683a55975aa92d18fd2eafac
+  MDCSwipeToChoose: a790feba03f7b7fb6dc30ec95e9611b82cd558cd
 
 COCOAPODS: 0.29.0

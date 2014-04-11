@@ -28,7 +28,6 @@
 
 @interface ChoosePersonViewController ()
 @property (nonatomic, strong) NSMutableArray *people;
-@property (nonatomic, strong) UIWebView *webView;
 @end
 
 @implementation ChoosePersonViewController
@@ -49,24 +48,6 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-
-    MDCSwipeOptions *options = [MDCSwipeOptions new];
-    options.delegate = self;
-    options.onPan = ^(MDCPanState *state){
-        switch (state.direction) {
-            case MDCSwipeDirectionLeft:
-                self.webView.alpha = 0.5f - state.thresholdRatio;
-                break;
-            case MDCSwipeDirectionRight:
-                self.webView.alpha = 0.5f + state.thresholdRatio;
-                break;
-            case MDCSwipeDirectionNone:
-                self.webView.alpha = 0.5f;
-                break;
-        }
-    };
-    [self.webView mdc_swipeToChooseSetup:options];
-
 
     // Display the first ChoosePersonView in front. Users can swipe to indicate
     // whether they like or dislike the person displayed.
