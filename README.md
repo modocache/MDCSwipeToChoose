@@ -9,7 +9,7 @@ Swipe to "like" or "dislike" any view, just like Tinder.app. Build a flashcard a
 
 ![](http://f.cl.ly/items/0f1t1Z2E0Q2j3X47193d/7zrvo.gif)
 
-You may view slides on some the architecture decisions that went into this library [here](modocache.io/ios-ui-component-api-design).
+You may view slides on some the architecture decisions that went into this library [here](http://modocache.io/ios-ui-component-api-design).
 
 ## How to Install via CocoaPods
 
