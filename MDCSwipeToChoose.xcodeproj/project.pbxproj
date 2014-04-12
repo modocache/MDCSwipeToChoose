@@ -7,10 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		DA06339318F23C2B009EBE62 /* UIColor+MDCRGB8Bit.m in Sources */ = {isa = PBXBuildFile; fileRef = DA06337E18F23C2B009EBE62 /* UIColor+MDCRGB8Bit.m */; };
-		DA06339418F23C2B009EBE62 /* UIView+MDCBorderedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DA06338018F23C2B009EBE62 /* UIView+MDCBorderedLabel.m */; };
 		DA06339518F23C2B009EBE62 /* MDCGeometry.m in Sources */ = {isa = PBXBuildFile; fileRef = DA06338218F23C2B009EBE62 /* MDCGeometry.m */; };
-		DA06339918F23C2B009EBE62 /* MDCViewState.m in Sources */ = {isa = PBXBuildFile; fileRef = DA06338C18F23C2B009EBE62 /* MDCViewState.m */; };
 		DA0633B518F2C0CA009EBE62 /* MDCGeometryTests.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0633B418F2C0CA009EBE62 /* MDCGeometryTests.m */; };
 		DA0633C918F2EB74009EBE62 /* MDCSwipeOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0633BB18F2EB74009EBE62 /* MDCSwipeOptions.m */; };
 		DA0633CA18F2EB74009EBE62 /* MDCSwipeToChooseViewOptions.m in Sources */ = {isa = PBXBuildFile; fileRef = DA0633BD18F2EB74009EBE62 /* MDCSwipeToChooseViewOptions.m */; };
@@ -24,6 +21,9 @@
 		DA5B73C818F2330B00BB5F8E /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5B73C718F2330B00BB5F8E /* UIKit.framework */; };
 		DA5B73CB18F2330B00BB5F8E /* libMDCSwipeToChoose.a in Frameworks */ = {isa = PBXBuildFile; fileRef = DA5B73B318F2330B00BB5F8E /* libMDCSwipeToChoose.a */; };
 		DA5B73D118F2330B00BB5F8E /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = DA5B73CF18F2330B00BB5F8E /* InfoPlist.strings */; };
+		DAA4C76B18F8B97100F6C4D6 /* MDCViewState.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA4C76518F8B97100F6C4D6 /* MDCViewState.m */; };
+		DAA4C76C18F8B97100F6C4D6 /* UIView+MDCBorderedLabel.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA4C76818F8B97100F6C4D6 /* UIView+MDCBorderedLabel.m */; };
+		DAA4C76D18F8B97100F6C4D6 /* UIColor+MDCRGB8Bit.m in Sources */ = {isa = PBXBuildFile; fileRef = DAA4C76A18F8B97100F6C4D6 /* UIColor+MDCRGB8Bit.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,14 +49,8 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
-		DA06337D18F23C2B009EBE62 /* UIColor+MDCRGB8Bit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+MDCRGB8Bit.h"; sourceTree = "<group>"; };
-		DA06337E18F23C2B009EBE62 /* UIColor+MDCRGB8Bit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+MDCRGB8Bit.m"; sourceTree = "<group>"; };
-		DA06337F18F23C2B009EBE62 /* UIView+MDCBorderedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MDCBorderedLabel.h"; sourceTree = "<group>"; };
-		DA06338018F23C2B009EBE62 /* UIView+MDCBorderedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MDCBorderedLabel.m"; sourceTree = "<group>"; };
 		DA06338118F23C2B009EBE62 /* MDCGeometry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCGeometry.h; sourceTree = "<group>"; };
 		DA06338218F23C2B009EBE62 /* MDCGeometry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCGeometry.m; sourceTree = "<group>"; };
-		DA06338B18F23C2B009EBE62 /* MDCViewState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCViewState.h; sourceTree = "<group>"; };
-		DA06338C18F23C2B009EBE62 /* MDCViewState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCViewState.m; sourceTree = "<group>"; };
 		DA0633B118F23EAD009EBE62 /* MDCSwipeToChoose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCSwipeToChoose.h; sourceTree = "<group>"; };
 		DA0633B418F2C0CA009EBE62 /* MDCGeometryTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCGeometryTests.m; sourceTree = "<group>"; };
 		DA0633BA18F2EB74009EBE62 /* MDCSwipeOptions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCSwipeOptions.h; sourceTree = "<group>"; };
@@ -81,6 +75,12 @@
 		DA5B73C718F2330B00BB5F8E /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = Library/Frameworks/UIKit.framework; sourceTree = DEVELOPER_DIR; };
 		DA5B73CE18F2330B00BB5F8E /* MDCSwipeToChooseTests-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "MDCSwipeToChooseTests-Info.plist"; sourceTree = "<group>"; };
 		DA5B73D018F2330B00BB5F8E /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		DAA4C76418F8B97100F6C4D6 /* MDCViewState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MDCViewState.h; sourceTree = "<group>"; };
+		DAA4C76518F8B97100F6C4D6 /* MDCViewState.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MDCViewState.m; sourceTree = "<group>"; };
+		DAA4C76718F8B97100F6C4D6 /* UIView+MDCBorderedLabel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+MDCBorderedLabel.h"; sourceTree = "<group>"; };
+		DAA4C76818F8B97100F6C4D6 /* UIView+MDCBorderedLabel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+MDCBorderedLabel.m"; sourceTree = "<group>"; };
+		DAA4C76918F8B97100F6C4D6 /* UIColor+MDCRGB8Bit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIColor+MDCRGB8Bit.h"; sourceTree = "<group>"; };
+		DAA4C76A18F8B97100F6C4D6 /* UIColor+MDCRGB8Bit.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIColor+MDCRGB8Bit.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -111,30 +111,12 @@
 			children = (
 				DA06338118F23C2B009EBE62 /* MDCGeometry.h */,
 				DA06338218F23C2B009EBE62 /* MDCGeometry.m */,
-				DA06338318F23C2B009EBE62 /* Models */,
-				DA06337C18F23C2B009EBE62 /* Categories */,
+				DAA4C76918F8B97100F6C4D6 /* UIColor+MDCRGB8Bit.h */,
+				DAA4C76A18F8B97100F6C4D6 /* UIColor+MDCRGB8Bit.m */,
+				DAA4C76618F8B97100F6C4D6 /* Views */,
+				DAA4C76318F8B97100F6C4D6 /* State */,
 			);
 			path = Internal;
-			sourceTree = "<group>";
-		};
-		DA06337C18F23C2B009EBE62 /* Categories */ = {
-			isa = PBXGroup;
-			children = (
-				DA06337D18F23C2B009EBE62 /* UIColor+MDCRGB8Bit.h */,
-				DA06337E18F23C2B009EBE62 /* UIColor+MDCRGB8Bit.m */,
-				DA06337F18F23C2B009EBE62 /* UIView+MDCBorderedLabel.h */,
-				DA06338018F23C2B009EBE62 /* UIView+MDCBorderedLabel.m */,
-			);
-			path = Categories;
-			sourceTree = "<group>";
-		};
-		DA06338318F23C2B009EBE62 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				DA06338B18F23C2B009EBE62 /* MDCViewState.h */,
-				DA06338C18F23C2B009EBE62 /* MDCViewState.m */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		DA06338D18F23C2B009EBE62 /* Public */ = {
@@ -248,6 +230,24 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		DAA4C76318F8B97100F6C4D6 /* State */ = {
+			isa = PBXGroup;
+			children = (
+				DAA4C76418F8B97100F6C4D6 /* MDCViewState.h */,
+				DAA4C76518F8B97100F6C4D6 /* MDCViewState.m */,
+			);
+			path = State;
+			sourceTree = "<group>";
+		};
+		DAA4C76618F8B97100F6C4D6 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				DAA4C76718F8B97100F6C4D6 /* UIView+MDCBorderedLabel.h */,
+				DAA4C76818F8B97100F6C4D6 /* UIView+MDCBorderedLabel.m */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -329,16 +329,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DA06339318F23C2B009EBE62 /* UIColor+MDCRGB8Bit.m in Sources */,
-				DA06339418F23C2B009EBE62 /* UIView+MDCBorderedLabel.m in Sources */,
 				DA0633CB18F2EB74009EBE62 /* MDCSwipeResult.m in Sources */,
-				DA06339918F23C2B009EBE62 /* MDCViewState.m in Sources */,
+				DAA4C76C18F8B97100F6C4D6 /* UIView+MDCBorderedLabel.m in Sources */,
+				DAA4C76B18F8B97100F6C4D6 /* MDCViewState.m in Sources */,
 				DA0633CA18F2EB74009EBE62 /* MDCSwipeToChooseViewOptions.m in Sources */,
 				DA0633CC18F2EB74009EBE62 /* MDCPanState.m in Sources */,
 				DA0633C918F2EB74009EBE62 /* MDCSwipeOptions.m in Sources */,
 				DA06339518F23C2B009EBE62 /* MDCGeometry.m in Sources */,
 				DA0633CE18F2EB74009EBE62 /* UIView+MDCSwipeToChoose.m in Sources */,
 				DA0633CD18F2EB74009EBE62 /* MDCSwipeToChooseView.m in Sources */,
+				DAA4C76D18F8B97100F6C4D6 /* UIColor+MDCRGB8Bit.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
