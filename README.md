@@ -7,7 +7,7 @@ Swipe to "like" or "dislike" any view, just like Tinder.app. Build a flashcard a
 - Use `UIView+MDCSwipeToChoose` to add a swipe gesture and callbacks to any `UIView`.
 - Use `MDCSwipeToChooseView` to get a UI nearly identical to Tinder.app in just a few lines of code.
 
-![](http://f.cl.ly/items/0f1t1Z2E0Q2j3X47193d/7zrvo.gif)
+![](http://cl.ly/image/0M1j1J0E0s3G/MDCSwipeToChoose-v0.2.0.gif)
 
 You may view slides on some the architecture decisions that went into this library [here](http://modocache.io/ios-ui-component-api-design).
 
