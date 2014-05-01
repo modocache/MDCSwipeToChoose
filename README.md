@@ -23,6 +23,8 @@ pod "MDCSwipeToChoose"
 
 Check out [the sample app](https://github.com/modocache/MDCSwipeToChoose/tree/master/Examples/LikedOrNope) for an example of how to use `MDCSwipeToChooseView` to build the UI in the GIF above.
 
+> **NOTE:** You must run `pod install` in the `Examples/LikedOrNope` directory before building the example app.
+
 Every public class contains documentation in its header file.
 
 ### Swiping Yes/No

@@ -1,14 +1,10 @@
 PODS:
-  - MDCSwipeToChoose (0.1.0)
+  - MDCSwipeToChoose (0.2.0)
 
 DEPENDENCIES:
-  - MDCSwipeToChoose (from `../../`)
-
-EXTERNAL SOURCES:
-  MDCSwipeToChoose:
-    :path: ../../
+  - MDCSwipeToChoose
 
 SPEC CHECKSUMS:
-  MDCSwipeToChoose: a790feba03f7b7fb6dc30ec95e9611b82cd558cd
+  MDCSwipeToChoose: 466ac0928b7658c49c14fac77896f366383dcdf6
 
-COCOAPODS: 0.29.0
+COCOAPODS: 0.32.1
