@@ -37,6 +37,7 @@
         _swipeCancelledAnimationOptions = UIViewAnimationOptionCurveEaseOut;
         _swipeAnimationDuration = 0.1;
         _swipeAnimationOptions = UIViewAnimationOptionCurveEaseIn;
+        _allowedSwipeDirections = MDCSwipeDirectionLeft | MDCSwipeDirectionRight;
         _rotationFactor = 3.f;
 
         _onChosen = [[self class] exitScreenOnChosenWithDuration:0.1

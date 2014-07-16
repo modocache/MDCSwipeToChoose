@@ -30,7 +30,9 @@
  * and a swipe to the right as positive.
  */
 typedef NS_ENUM(NSInteger, MDCSwipeDirection) {
-    MDCSwipeDirectionNone = 0,
-    MDCSwipeDirectionLeft,
-    MDCSwipeDirectionRight
+    MDCSwipeDirectionNone = 1,
+    MDCSwipeDirectionLeft = 2,
+    MDCSwipeDirectionRight = 4,
+    MDCSwipeDirectionUp = 8,
+    MDCSwipeDirectionDown = 16
 };

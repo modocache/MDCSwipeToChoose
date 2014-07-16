@@ -23,6 +23,7 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "MDCSwipeDirection.h"
 
 @class MDCPanState;
 @class MDCSwipeResult;
@@ -80,6 +81,12 @@ typedef void (^MDCSwipeToChooseOnChosenBlock)(MDCSwipeResult *state);
  * the angle of rotation.
  */
 @property (nonatomic, assign) CGFloat rotationFactor;
+
+/*!
+ * Contains the directions on which the swipe will be recognized
+ * Must be set using a OR operator (like MDCSwipeDirectionUp | MDCSwipeDirectionDown)
+ */
+@property (nonatomic, assign) MDCSwipeDirection allowedSwipeDirections;
 
 /*!
  * A callback to be executed when the view is panned. The block takes an instance of
