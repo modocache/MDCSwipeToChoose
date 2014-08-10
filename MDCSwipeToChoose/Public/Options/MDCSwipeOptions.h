@@ -68,8 +68,8 @@ typedef void (^MDCSwipeToChooseOnChosenBlock)(MDCSwipeResult *state);
 @property (nonatomic, assign) UIViewAnimationOptions swipeAnimationOptions;
 
 /*!
- * The distance, in pixels, that a view must be panned in order to constitue a selection.
- * For example, if the `threshold` is `100.f`, panning the view `101.f` pixels to the right
+ * The distance, in points, that a view must be panned in order to constitue a selection.
+ * For example, if the `threshold` is `100.f`, panning the view `101.f` points to the right
  * is considered a selection in the `MDCSwipeDirectionRight` direction. A default value is
  * provided in the `-init` method.
  */
