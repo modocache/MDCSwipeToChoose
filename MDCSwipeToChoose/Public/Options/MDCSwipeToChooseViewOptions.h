@@ -81,6 +81,18 @@
 @property (nonatomic, assign) CGFloat threshold;
 
 /*!
+ * The image named used to displayed in the `likeView`. If this is present, it will take
+ * precedence over the likeText
+ */
+@property (nonatomic, copy) NSString *likeImageName;
+
+/*!
+ * The image named used to displayed in the `nopeView`. If this is present, it will take
+ * precedence over the nopeText
+ */
+@property (nonatomic, copy) NSString *nopeImageName;
+
+/*!
  * A callback to be executed when the view is panned. The block takes an instance of
  * `MDCPanState` as an argument. Use this `state` instance to determine the pan direction
  * and the distance until the threshold is reached.
