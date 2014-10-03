@@ -66,6 +66,20 @@ The following is an example of how you can use `MDCSwipeToChooseView` to display
     NSLog(@"Couldn't decide, huh?");
 }
 
+// Sent before a choice is made. Cancel the choice by returning `NO`. Otherwise return `YES`.
+- (BOOL)view:(UIView *)view shouldBeChosenWithDirection:(MDCSwipeDirection)direction {
+    if (direction == MDCSwipeDirectionLeft) {
+        return YES;
+    } else {
+        // Snap the view back and cancel the choice.
+        [UIView animateWithDuration:0.16 animations:^{
+            view.transform = CGAffineTransformIdentity;
+            view.center = self.superview.center;
+        }];
+        return NO;
+    }
+}
+
 // This is called then a user swipes the view fully left or right.
 - (void)view:(UIView *)view wasChosenWithDirection:(MDCSwipeDirection)direction {
     if (direction == MDCSwipeDirectionLeft) {
