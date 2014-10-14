@@ -6,7 +6,6 @@
 //  Copyright (c) 2014 modocache. All rights reserved.
 //
 
-#import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "MDCSwipeDirection.h"
 
