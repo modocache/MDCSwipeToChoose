@@ -31,14 +31,19 @@
 - (void)constructBorderedLabelWithText:(NSString *)text
                                  color:(UIColor *)color
                                  angle:(CGFloat)angle {
+    [self constructBorderedLabelWithText:text color:color angle:angle borderWidth:nil font:nil];
+}
+
+- (void)constructBorderedLabelWithText:(NSString *)text color:(UIColor *)color angle:(CGFloat)angle borderWidth:(NSNumber *)borderWidth font:(UIFont *)font
+{
     self.layer.borderColor = color.CGColor;
-    self.layer.borderWidth = 5.f;
+    self.layer.borderWidth = borderWidth ? [borderWidth floatValue] : 5.f;
     self.layer.cornerRadius = 10.f;
 
     UILabel *label = [[UILabel alloc] initWithFrame:self.bounds];
     label.text = [text uppercaseString];
     label.textAlignment = NSTextAlignmentCenter;
-    label.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBlack"
+    label.font = font ? font : [UIFont fontWithName:@"HelveticaNeue-CondensedBlack"
                                  size:48.f];
     label.textColor = color;
     [self addSubview:label];
