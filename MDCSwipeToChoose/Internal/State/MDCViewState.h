@@ -34,6 +34,7 @@ extern const MDCRotationDirection MDCRotationTowardsCenter;
  * The center of the view when the pan gesture began.
  */
 @property (nonatomic, assign) CGPoint originalCenter;
+@property (nonatomic, assign) CGAffineTransform originalTransform;
 
 /*!
  * When the pan gesture originates at the top half of the view, the view rotates
