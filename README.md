@@ -29,6 +29,8 @@ Every public class contains documentation in its header file.
 
 ### Swiping Yes/No
 
+The following is an example of how you can use `MDCSwipeToChooseView` to display a photo. The user can choose to delete it by swiping left, or save it by swiping right.
+
 #### Objective-c
 
 ```objc
