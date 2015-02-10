@@ -30,6 +30,7 @@
 
 typedef void (^MDCSwipeToChooseOnPanBlock)(MDCPanState *state);
 typedef void (^MDCSwipeToChooseOnChosenBlock)(MDCSwipeResult *state);
+typedef void (^MDCSwipeToChooseOnCancelBlock)(UIView *swipedView);
 
 /*!
  * A set of options used to customize the behavior of the
@@ -96,6 +97,14 @@ typedef void (^MDCSwipeToChooseOnChosenBlock)(MDCSwipeResult *state);
  block in order to properly notify the delegate of the swipe result.
  */
 @property (nonatomic, copy) MDCSwipeToChooseOnChosenBlock onChosen;
+
+/*!
+ * A callback to be executed when the view is swiped and the swipe is cancelled 
+ (i.e. because view:shouldBeChosen: delegate callback returned NO for swiped view).
+ The view that was swiped is passed into this block so that you can restore its 
+ state in this callback. May be nil.
+ */
+@property (nonatomic, copy) MDCSwipeToChooseOnCancelBlock onCancel;
 
 /*!
  * The default callback for when a view is swiped an chosen. This callback moves the view

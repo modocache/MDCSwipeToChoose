@@ -149,6 +149,10 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
     if ([delegate respondsToSelector:@selector(view:shouldBeChosenWithDirection:)]) {
         BOOL should = [delegate view:self shouldBeChosenWithDirection:direction];
         if (!should) {
+            [self mdc_returnToOriginalCenter];
+            if (self.mdc_options.onCancel != nil){
+                self.mdc_options.onCancel(self);
+            }
             return;
         }
     }
