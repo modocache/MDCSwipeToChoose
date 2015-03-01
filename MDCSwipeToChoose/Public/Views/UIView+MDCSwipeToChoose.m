@@ -192,9 +192,14 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
 
 - (void)mdc_rotateForTranslation:(CGPoint)translation
                rotationDirection:(MDCRotationDirection)rotationDirection {
+    
     CGFloat rotation = MDCDegreesToRadians(translation.x/100 * self.mdc_options.rotationFactor);
-    self.transform = CGAffineTransformRotate(self.mdc_viewState.originalTransform,
-                                             rotationDirection * rotation);
+    CABasicAnimation* ba = [CABasicAnimation animationWithKeyPath:@"transform"];
+    ba.autoreverses = YES;
+    ba.duration = 0;
+    ba.toValue = [NSValue valueWithCATransform3D:CATransform3DMakeRotation(rotationDirection * rotation, 0.0, 0.0, 1.0)];
+    [self.layer addAnimation:ba forKey:nil];
+    
 }
 
 #pragma mark Threshold
