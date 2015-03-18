@@ -98,7 +98,7 @@ As of version 0.2.0, you may also swipe a view programmatically:
 [self.swipeToChooseView mdc_swipe:MDCSwipeDirectionLeft];
 ```
 
-#### Swfit
+#### Swift
 
 To use objective-c code from swift, you need to use bridging-header.
 
