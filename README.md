@@ -74,7 +74,7 @@ The following is an example of how you can use `MDCSwipeToChooseView` to display
         // Snap the view back and cancel the choice.
         [UIView animateWithDuration:0.16 animations:^{
             view.transform = CGAffineTransformIdentity;
-            view.center = self.superview.center;
+            view.center = [view superview].center;
         }];
         return NO;
     }
