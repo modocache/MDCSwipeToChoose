@@ -1,2 +1,2 @@
 language: objective-c
-script: xcodebuild -project MDCSwipeToChoose.xcodeproj -scheme MDCSwipeToChoose -sdk iphonesimulator test
+script: xctool -workspace 'MDCSwipeToChoose.xcworkspace' -scheme 'MDCSwipeToChoose' -sdk 'iphonesimulator' -configuration Release clean test ONLY_ACTIVE_ARCH=NO
