@@ -127,7 +127,6 @@ In the following example, we adjust the opacity of a `UIWebView` when it's panne
     };
     [self.webView mdc_swipeToChooseSetup:options];
 }
-```
 
 ###Swiping in Swift
 
