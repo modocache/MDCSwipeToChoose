@@ -134,7 +134,7 @@ In the following example, we adjust the opacity of a `UIWebView` when it's panne
 The following is an example of how you can use `MDCSwipeToChooseView` to display a photo in swift. The user can choose to delete it by swiping left, or save it by swiping right.
 
 First you must create a BridgingHeader.h file
-```
+```objc
 #ifndef ProjectName_BridgingHeader_h
 #define ProjectName_BridgingHeader_h
 
@@ -145,12 +145,9 @@ First you must create a BridgingHeader.h file
 #endif
 ```
 You must then add the bridging header file to the project by navigating to Build Settings then searching for 'Bridging Header'. Double click the field and type: ProjectName/BridgingHeader.h as the value
-```
-#import <MDCSwipeToChoose/MDCSwipeToChoose.h>
 
-// ... in a view controller
-
-#pragma mark - Creating and Customizing a MDCSwipeToChooseView
+```swift
+// Creating and Customizing a MDCSwipeToChooseView
 
 override func viewDidLoad(){
 super.viewDidLoad()
@@ -172,7 +169,7 @@ view.imageView.image = UIImage(named:"photo")
 self.view.addSubview(view)
 }
 
-#pragma mark - MDCSwipeToChooseDelegate Callbacks
+// MDCSwipeToChooseDelegate Callbacks
 
 // This is called when a user didn't fully swipe left or right.
 func viewDidCancelSwipe(view: UIView) -> Void{
