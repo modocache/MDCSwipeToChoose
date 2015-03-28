@@ -150,53 +150,53 @@ You must then add the bridging header file to the project by navigating to Build
 // Creating and Customizing a MDCSwipeToChooseView
 
 override func viewDidLoad(){
-super.viewDidLoad()
+    super.viewDidLoad()
 
-// You can customize MDCSwipeToChooseView using MDCSwipeToChooseViewOptions.
-var options:MDCSwipeToChooseViewOptions = MDCSwipeToChooseViewOptions()
-options.delegate = self
-options.likedText = "Keep"
-options.likedColor = [UIColor blueColor]
-options.nopeText = "Delete"
-options.onPan = { state -> Void in
-if (state.thresholdRatio == 1.0 && state.direction == MDCSwipeDirection.Left) {
-Println("Let go now to delete the photo!")
+    // You can customize MDCSwipeToChooseView using MDCSwipeToChooseViewOptions.
+    var options:MDCSwipeToChooseViewOptions = MDCSwipeToChooseViewOptions()
+    options.delegate = self
+    options.likedText = "Keep"
+    options.likedColor = [UIColor blueColor]
+    options.nopeText = "Delete"
+    options.onPan = { state -> Void in
+    if (state.thresholdRatio == 1.0 && state.direction == MDCSwipeDirection.Left) {
+        Println("Let go now to delete the photo!")
+    }
 }
-};
 
 var view:MDCSwipeToChooseView = MDCSwipeToChooseView(frame:self.view.bounds, options:options)
-view.imageView.image = UIImage(named:"photo")
-self.view.addSubview(view)
+    view.imageView.image = UIImage(named:"photo")
+    self.view.addSubview(view)
 }
 
 // MDCSwipeToChooseDelegate Callbacks
 
 // This is called when a user didn't fully swipe left or right.
 func viewDidCancelSwipe(view: UIView) -> Void{
-Println("Couldn't decide, huh?")
+    Println("Couldn't decide, huh?")
 }
 
 // Sent before a choice is made. Cancel the choice by returning `NO`. Otherwise return `YES`.
 func view(view:UIView, shouldBeChosenWithDirection:MDCSwipeDirection) -> BOOL {
-if (shouldBeChosenWithDirection == MDCSwipeDirection.Left) {
-return YES;
-} else {
-// Snap the view back and cancel the choice.
-UIView.animateWithDuration(0.16, animations: {
-view.transform = CGAffineTransformIdentity
-view.center = self.superview.center
-}
-return NO;
-}
+    if (shouldBeChosenWithDirection == MDCSwipeDirection.Left) {
+        return YES;
+    } else {
+        // Snap the view back and cancel the choice.
+        UIView.animateWithDuration(0.16, animations: {
+        view.transform = CGAffineTransformIdentity
+        view.center = self.superview.center
+        }
+    return NO;
+    }
 }
 
 // This is called then a user swipes the view fully left or right.
 func view(view: UIView, wasChosenWithDirection: MDCSwipeDirection) -> Void{
-if (wasChosenWithDirection == MDCSwipeDirection.Left) {
-Println("Photo deleted!");
-} else {
-Println("Photo saved!");
-}
+    if (wasChosenWithDirection == MDCSwipeDirection.Left) {
+        Println("Photo deleted!");
+    } else {
+        Println("Photo saved!");
+    }
 }
 ```
 
