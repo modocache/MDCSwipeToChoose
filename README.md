@@ -170,6 +170,12 @@ func view(view: UIView, wasChosenWithDirection: MDCSwipeDirection) -> Void{
 }
 
 ```
+If you're using Cocoapods 0.36+ (perhaps because you want to include pods that contain Swift code) and you've included the use_frameworks! directive in your Podfile, then you've converted all your pods (including MDCSwipeToChoose) into frameworks. Therefore, you'll need to include the line
+
+```swift
+import MDCSwipeToChoose
+```
+...in your Swift files (even if you're using a bridging header).
 
 ## More Generic Swiping
 
@@ -273,6 +279,7 @@ func view(view: UIView, wasChosenWithDirection: MDCSwipeDirection) -> Void{
         Println("Photo saved!");
     }
 }
+
 ```
 
 As of version 0.2.0, you may also swipe a view programmatically:
