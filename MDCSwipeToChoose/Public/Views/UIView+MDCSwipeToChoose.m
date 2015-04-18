@@ -39,8 +39,6 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
     self.mdc_options = options ? options : [MDCSwipeOptions new];
     self.mdc_viewState = [MDCViewState new];
     self.mdc_viewState.originalCenter = self.center;
-    //assign value ,otherwise originalTransform will have wrong transform matrix to work with
-    self.mdc_viewState.originalTransform = self.transform;
 
     [self mdc_setupPanGestureRecognizer];
 }
