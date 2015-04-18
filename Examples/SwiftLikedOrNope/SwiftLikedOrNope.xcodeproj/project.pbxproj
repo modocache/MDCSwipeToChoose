@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		78F7572AEE704969FB864E16 /* libPods.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 735815D0C849E0AE4FD08245 /* libPods.a */; };
 		8AC17DA61AC7366A004E6D2D /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8AC17DA51AC7366A004E6D2D /* AppDelegate.swift */; };
-		8AC17DA91AC7366A004E6D2D /* SwiftLikedOrNope.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8AC17DA71AC7366A004E6D2D /* SwiftLikedOrNope.xcdatamodeld */; };
 		8AC17DAE1AC7366A004E6D2D /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 8AC17DAC1AC7366A004E6D2D /* Main.storyboard */; };
 		8AC17DB01AC7366A004E6D2D /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 8AC17DAF1AC7366A004E6D2D /* Images.xcassets */; };
 		8AC17DB31AC7366A004E6D2D /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 8AC17DB11AC7366A004E6D2D /* LaunchScreen.xib */; };
@@ -35,7 +34,6 @@
 		8AC17DA01AC7366A004E6D2D /* SwiftLikedOrNope.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SwiftLikedOrNope.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		8AC17DA41AC7366A004E6D2D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		8AC17DA51AC7366A004E6D2D /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		8AC17DA81AC7366A004E6D2D /* SwiftLikedOrNope.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = SwiftLikedOrNope.xcdatamodel; sourceTree = "<group>"; };
 		8AC17DAD1AC7366A004E6D2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		8AC17DAF1AC7366A004E6D2D /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		8AC17DB21AC7366A004E6D2D /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
@@ -117,7 +115,6 @@
 				8AC17DAC1AC7366A004E6D2D /* Main.storyboard */,
 				8AC17DAF1AC7366A004E6D2D /* Images.xcassets */,
 				8AC17DB11AC7366A004E6D2D /* LaunchScreen.xib */,
-				8AC17DA71AC7366A004E6D2D /* SwiftLikedOrNope.xcdatamodeld */,
 				8AC17DA31AC7366A004E6D2D /* Supporting Files */,
 				8AC17DD31AC737AA004E6D2D /* BridgingHeader.h */,
 			);
@@ -313,7 +310,6 @@
 				8AC17DD01AC7377C004E6D2D /* ChoosePersonViewController.swift in Sources */,
 				8AC17DCC1AC73756004E6D2D /* ImageLabelView.swift in Sources */,
 				8AC17DD21AC73794004E6D2D /* Person.swift in Sources */,
-				8AC17DA91AC7366A004E6D2D /* SwiftLikedOrNope.xcdatamodeld in Sources */,
 				8AC17DA61AC7366A004E6D2D /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -524,19 +520,6 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
-
-/* Begin XCVersionGroup section */
-		8AC17DA71AC7366A004E6D2D /* SwiftLikedOrNope.xcdatamodeld */ = {
-			isa = XCVersionGroup;
-			children = (
-				8AC17DA81AC7366A004E6D2D /* SwiftLikedOrNope.xcdatamodel */,
-			);
-			currentVersion = 8AC17DA81AC7366A004E6D2D /* SwiftLikedOrNope.xcdatamodel */;
-			path = SwiftLikedOrNope.xcdatamodeld;
-			sourceTree = "<group>";
-			versionGroupType = wrapper.xcdatamodel;
-		};
-/* End XCVersionGroup section */
 	};
 	rootObject = 8AC17D981AC7366A004E6D2D /* Project object */;
 }

@@ -40,7 +40,10 @@ class ChoosePersonView: MDCSwipeToChooseView {
         super.init(frame: frame, options: options)
         self.person = person
         
-        self.imageView.image = self.person.Image!
+        if let image = self.person.Image {
+            self.imageView.image = image
+        }
+        
         self.autoresizingMask = UIViewAutoresizing.FlexibleHeight | UIViewAutoresizing.FlexibleWidth
         UIViewAutoresizing.FlexibleBottomMargin
         
