@@ -31,6 +31,7 @@
 
 static CGFloat const MDCSwipeToChooseViewHorizontalPadding = 10.f;
 static CGFloat const MDCSwipeToChooseViewTopPadding = 20.f;
+static CGFloat const MDCSwipeToChooseViewImageTopPadding = 100.f;
 static CGFloat const MDCSwipeToChooseViewLabelWidth = 65.f;
 
 @interface MDCSwipeToChooseView ()
@@ -47,8 +48,19 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 65.f;
         _options = options ? options : [MDCSwipeToChooseViewOptions new];
         [self setupView];
         [self constructImageView];
-        [self constructLikedView];
-        [self constructNopeImageView];
+
+        if (_options.likeImageName) {
+            [self constructLikedViewWithImageName:_options.likeImageName];
+        } else {
+            [self constructLikedView];
+        }
+
+        if (_options.nopeImageName) {
+            [self constructNopeViewWithImageName:_options.nopeImageName];
+        } else {
+            [self constructNopeImageView];
+        }
+
         [self setupSwipeToChoose];
     }
     return self;
@@ -86,6 +98,20 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 65.f;
     [self.imageView addSubview:self.likedView];
 }
 
+- (void)constructLikedViewWithImageName:(NSString *)imageName
+{
+    CGRect frame = CGRectMake(MDCSwipeToChooseViewHorizontalPadding,
+                              MDCSwipeToChooseViewImageTopPadding,
+                              CGRectGetMidX(_imageView.bounds),
+                              MDCSwipeToChooseViewLabelWidth);
+    self.likedView = [[UIImageView alloc] initWithFrame:frame];
+    UIImageView *imageView = (id)self.likedView;
+    imageView.image = [UIImage imageNamed:imageName];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
+    self.likedView.alpha = 0.f;
+    [self.imageView addSubview:self.likedView];
+}
+
 - (void)constructNopeImageView {
     CGFloat width = CGRectGetMidX(self.imageView.bounds);
     CGFloat xOrigin = CGRectGetMaxX(_imageView.bounds) - width - MDCSwipeToChooseViewHorizontalPadding;
@@ -96,6 +122,21 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 65.f;
     [self.nopeView constructBorderedLabelWithText:self.options.nopeText
                                             color:self.options.nopeColor
                                             angle:self.options.nopeRotationAngle];
+    self.nopeView.alpha = 0.f;
+    [self.imageView addSubview:self.nopeView];
+}
+
+- (void)constructNopeViewWithImageName:(NSString *)imageName
+{
+    CGFloat width = CGRectGetMidX(self.imageView.bounds);
+    CGFloat xOrigin = CGRectGetMaxX(_imageView.bounds) - width - MDCSwipeToChooseViewHorizontalPadding;
+    self.nopeView = [[UIImageView alloc] initWithFrame:CGRectMake(xOrigin,
+                                                                  MDCSwipeToChooseViewImageTopPadding,
+                                                                  width,
+                                                                  MDCSwipeToChooseViewLabelWidth)];
+    UIImageView *imageView = (id)self.nopeView;
+    imageView.image = [UIImage imageNamed:imageName];
+    imageView.contentMode = UIViewContentModeScaleAspectFit;
     self.nopeView.alpha = 0.f;
     [self.imageView addSubview:self.nopeView];
 }
