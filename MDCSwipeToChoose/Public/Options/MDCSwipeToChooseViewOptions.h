@@ -49,6 +49,18 @@
 @property (nonatomic, strong) UIColor *likedColor;
 
 /*!
+ * The font of the text of the `likedView`. A default value is provided in the
+ * `-init` method.
+ */
+@property (nonatomic, strong) UIFont *likedFont;
+
+/*!
+ * The border width of the `likedView`. A default value is provided in the
+ * `-init` method.
+ */
+@property (nonatomic, strong) NSNumber *likedBorderWidth;
+
+/*!
  * The rotation angle of the `likedView`. A default value is provided in the
  * `-init` method.
  */
@@ -65,6 +77,18 @@
  * `-init` method.
  */
 @property (nonatomic, strong) UIColor *nopeColor;
+
+/*!
+ * The font of the text of the `nopeView`. A default value is provided in the
+ * `-init` method.
+ */
+@property (nonatomic, strong) UIFont *nopeFont;
+
+/*!
+ * The border width of the `nopeView`. A default value is provided in the
+ * `-init` method.
+ */
+@property (nonatomic, strong) NSNumber *nopeBorderWidth;
 
 /*!
  * The rotation angle of the `nopeView`. A default value is provided in the

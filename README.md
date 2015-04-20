@@ -48,7 +48,10 @@ The following is an example of how you can use `MDCSwipeToChooseView` to display
     options.delegate = self;
     options.likedText = @"Keep";
     options.likedColor = [UIColor blueColor];
+    options.likedFont = [UIFont fontWithName:@"HelveticaNeue-CondensedBlack"
+                                 size:48.f];
     options.nopeText = @"Delete";
+    options.nopeBorderWidth = @(5);
     options.onPan = ^(MDCPanState *state){
         if (state.thresholdRatio == 1.f && state.direction == MDCSwipeDirectionLeft) {
             NSLog(@"Let go now to delete the photo!");

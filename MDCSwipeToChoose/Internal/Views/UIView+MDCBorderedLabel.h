@@ -30,4 +30,6 @@
                                  color:(UIColor *)color
                                  angle:(CGFloat)angle;
 
+- (void)constructBorderedLabelWithText:(NSString *)text color:(UIColor *)color angle:(CGFloat)angle borderWidth:(NSNumber *)borderWidth font:(UIFont *)font;
+
 @end
