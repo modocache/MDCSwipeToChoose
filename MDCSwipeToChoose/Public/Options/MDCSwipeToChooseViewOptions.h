@@ -49,6 +49,12 @@
 @property (nonatomic, strong) UIColor *likedColor;
 
 /*!
+ * The image used to displayed in the `likeView`. If this is present, it will take
+ * precedence over the likeText
+ */
+@property (nonatomic, copy) UIImage *likedImage;
+
+/*!
  * The rotation angle of the `likedView`. A default value is provided in the
  * `-init` method.
  */
@@ -65,6 +71,12 @@
  * `-init` method.
  */
 @property (nonatomic, strong) UIColor *nopeColor;
+
+/*!
+ * The image used to displayed in the `nopeView`. If this is present, it will take
+ * precedence over the nopeText
+ */
+@property (nonatomic, copy) UIImage *nopeImage;
 
 /*!
  * The rotation angle of the `nopeView`. A default value is provided in the

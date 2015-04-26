@@ -31,6 +31,7 @@
 
 static CGFloat const MDCSwipeToChooseViewHorizontalPadding = 10.f;
 static CGFloat const MDCSwipeToChooseViewTopPadding = 20.f;
+static CGFloat const MDCSwipeToChooseViewImageTopPadding = 100.f;
 static CGFloat const MDCSwipeToChooseViewLabelWidth = 65.f;
 
 @interface MDCSwipeToChooseView ()
@@ -48,7 +49,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 65.f;
         [self setupView];
         [self constructImageView];
         [self constructLikedView];
-        [self constructNopeImageView];
+        [self constructNopeView];
         [self setupSwipeToChoose];
     }
     return self;
@@ -74,28 +75,44 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 65.f;
 }
 
 - (void)constructLikedView {
+    CGFloat yOrigin = (self.options.likedImage ? MDCSwipeToChooseViewImageTopPadding : MDCSwipeToChooseViewTopPadding);
+
     CGRect frame = CGRectMake(MDCSwipeToChooseViewHorizontalPadding,
-                              MDCSwipeToChooseViewTopPadding,
-                              CGRectGetMidX(_imageView.bounds),
+                              yOrigin,
+                              CGRectGetMidX(self.imageView.bounds),
                               MDCSwipeToChooseViewLabelWidth);
-    self.likedView = [[UIView alloc] initWithFrame:frame];
-    [self.likedView constructBorderedLabelWithText:self.options.likedText
-                                             color:self.options.likedColor
-                                             angle:self.options.likedRotationAngle];
+    if (self.options.likedImage) {
+        self.likedView = [[UIImageView alloc] initWithImage:self.options.likedImage];
+        self.likedView.frame = frame;
+        self.likedView.contentMode = UIViewContentModeScaleAspectFit;
+    } else {
+        self.likedView = [[UIView alloc] initWithFrame:frame];
+        [self.likedView constructBorderedLabelWithText:self.options.likedText
+                                                 color:self.options.likedColor
+                                                 angle:self.options.likedRotationAngle];
+    }
     self.likedView.alpha = 0.f;
     [self.imageView addSubview:self.likedView];
 }
 
-- (void)constructNopeImageView {
+- (void)constructNopeView {
     CGFloat width = CGRectGetMidX(self.imageView.bounds);
-    CGFloat xOrigin = CGRectGetMaxX(_imageView.bounds) - width - MDCSwipeToChooseViewHorizontalPadding;
-    self.nopeView = [[UIImageView alloc] initWithFrame:CGRectMake(xOrigin,
-                                                                  MDCSwipeToChooseViewTopPadding,
-                                                                  width,
-                                                                  MDCSwipeToChooseViewLabelWidth)];
-    [self.nopeView constructBorderedLabelWithText:self.options.nopeText
-                                            color:self.options.nopeColor
-                                            angle:self.options.nopeRotationAngle];
+    CGFloat xOrigin = CGRectGetMaxX(self.imageView.bounds) - width - MDCSwipeToChooseViewHorizontalPadding;
+    CGFloat yOrigin = (self.options.nopeImage ? MDCSwipeToChooseViewImageTopPadding : MDCSwipeToChooseViewTopPadding);
+    CGRect frame = CGRectMake(xOrigin,
+                              yOrigin,
+                              width,
+                              MDCSwipeToChooseViewLabelWidth);
+    if (self.options.nopeImage) {
+        self.nopeView = [[UIImageView alloc] initWithImage:self.options.nopeImage];
+        self.nopeView.frame = frame;
+        self.nopeView.contentMode = UIViewContentModeScaleAspectFit;
+    } else {
+        self.nopeView = [[UIView alloc] initWithFrame:frame];
+        [self.nopeView constructBorderedLabelWithText:self.options.nopeText
+                                                color:self.options.nopeColor
+                                                angle:self.options.nopeRotationAngle];
+    }
     self.nopeView.alpha = 0.f;
     [self.imageView addSubview:self.nopeView];
 }
