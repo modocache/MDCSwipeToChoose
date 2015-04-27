@@ -52,7 +52,7 @@
  * The image used to displayed in the `likeView`. If this is present, it will take
  * precedence over the likeText
  */
-@property (nonatomic, copy) UIImage *likedImage;
+@property (nonatomic, strong) UIImage *likedImage;
 
 /*!
  * The rotation angle of the `likedView`. A default value is provided in the
@@ -76,7 +76,7 @@
  * The image used to displayed in the `nopeView`. If this is present, it will take
  * precedence over the nopeText
  */
-@property (nonatomic, copy) UIImage *nopeImage;
+@property (nonatomic, strong) UIImage *nopeImage;
 
 /*!
  * The rotation angle of the `nopeView`. A default value is provided in the
