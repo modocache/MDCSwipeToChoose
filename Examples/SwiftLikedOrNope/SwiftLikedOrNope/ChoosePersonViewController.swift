@@ -161,7 +161,7 @@ class ChoosePersonViewController: UIViewController, MDCSwipeToChooseDelegate {
         return CGRectMake(frontFrame.origin.x, frontFrame.origin.y + 10.0, CGRectGetWidth(frontFrame), CGRectGetHeight(frontFrame))
     }
     func constructNopeButton() -> Void{
-        let button:UIButton =  UIButton.buttonWithType(UIButtonType.System) as UIButton
+        let button:UIButton =  UIButton.buttonWithType(UIButtonType.System) as! UIButton
         let image:UIImage = UIImage(named:"nope")!
         button.frame = CGRectMake(ChoosePersonButtonHorizontalPadding, CGRectGetMaxY(self.backCardView.frame) + ChoosePersonButtonVerticalPadding, image.size.width, image.size.height)
         button.setImage(image, forState: UIControlState.Normal)
@@ -171,7 +171,7 @@ class ChoosePersonViewController: UIViewController, MDCSwipeToChooseDelegate {
     }
     
     func constructLikedButton() -> Void{
-        let button:UIButton = UIButton.buttonWithType(UIButtonType.System) as UIButton
+        let button:UIButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
         let image:UIImage = UIImage(named:"liked")!
         button.frame = CGRectMake(CGRectGetMaxX(self.view.frame) - image.size.width - ChoosePersonButtonHorizontalPadding, CGRectGetMaxY(self.backCardView.frame) + ChoosePersonButtonVerticalPadding, image.size.width, image.size.height)
         button.setImage(image, forState:UIControlState.Normal)
