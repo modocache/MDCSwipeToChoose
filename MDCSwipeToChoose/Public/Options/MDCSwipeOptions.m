@@ -57,7 +57,8 @@
                               delay:0.0
                             options:options
                          animations:^{
-                             state.view.frame = destination;
+                             state.view.center = CGPointMake(CGRectGetMidX(destination),
+                                                             CGRectGetMidY(destination));
                          } completion:^(BOOL finished) {
                              if (finished) {
                                  [state.view removeFromSuperview];
