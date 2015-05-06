@@ -101,7 +101,7 @@ class ChoosePersonView: MDCSwipeToChooseView {
         self.informationView.addSubview(self.friendsImageLabelView)
     }
     
-    func buildImageLabelViewLeftOf(x:CGFloat, image:UIImage, text:NSString) -> ImagelabelView{
+    func buildImageLabelViewLeftOf(x:CGFloat, image:UIImage, text:String) -> ImagelabelView{
         var frame:CGRect = CGRect(x:x-ChoosePersonViewImageLabelWidth, y: 0,
             width: ChoosePersonViewImageLabelWidth,
             height: CGRectGetHeight(self.informationView.bounds))
