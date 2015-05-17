@@ -43,15 +43,15 @@ class ChoosePersonViewController: UIViewController, MDCSwipeToChooseDelegate {
         self.people = defaultPeople()
         // Here you can init your properties
     }
-    override init(){
-        super.init()
+    convenience init(){
+        self.init()
     }
     override func viewDidLoad(){
         super.viewDidLoad()
         
         // Display the first ChoosePersonView in front. Users can swipe to indicate
         // whether they like or dislike the person displayed.
-        self.setFrontCardView(self.popPersonViewWithFrame(frontCardViewFrame())!)
+        self.setFrontCardViewUpdate(self.popPersonViewWithFrame(frontCardViewFrame())!)
         self.view.addSubview(self.frontCardView)
         
         // Display the second ChoosePersonView in back. This view controller uses
@@ -94,7 +94,7 @@ class ChoosePersonViewController: UIViewController, MDCSwipeToChooseDelegate {
         // MDCSwipeOptions class). Since the front card view is gone, we
         // move the back card to the front, and create a new back card.
         if(self.backCardView != nil){
-            self.setFrontCardView(self.backCardView)
+            self.setFrontCardViewUpdate(self.backCardView)
         }
         
         backCardView = self.popPersonViewWithFrame(self.backCardViewFrame())
@@ -108,7 +108,7 @@ class ChoosePersonViewController: UIViewController, MDCSwipeToChooseDelegate {
                 },completion:nil)
         }
     }
-    func setFrontCardView(frontCardView:ChoosePersonView) -> Void{
+    func setFrontCardViewUpdate(frontCardView:ChoosePersonView) -> Void{
         
         // Keep track of the person currently being chosen.
         // Quick and dirty, just for the purposes of this sample app.
