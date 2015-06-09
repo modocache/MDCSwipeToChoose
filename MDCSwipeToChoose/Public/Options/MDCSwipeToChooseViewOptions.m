@@ -39,6 +39,7 @@
         _nopeRotationAngle = 15.f;
 
         _threshold = 100.f;
+        _swipeEnabled = YES;
     }
     return self;
 }

@@ -38,6 +38,7 @@
         _swipeAnimationDuration = 0.1;
         _swipeAnimationOptions = UIViewAnimationOptionCurveEaseIn;
         _rotationFactor = 3.f;
+        _swipeEnabled = YES;
 
         _onChosen = [[self class] exitScreenOnChosenWithDuration:0.1
                                                          options:UIViewAnimationOptionCurveLinear];

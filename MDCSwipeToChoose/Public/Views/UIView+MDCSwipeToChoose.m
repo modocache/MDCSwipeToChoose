@@ -41,7 +41,9 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
     self.mdc_viewState.originalCenter = self.center;
     self.mdc_viewState.originalTransform = self.layer.transform;
 
-    [self mdc_setupPanGestureRecognizer];
+    if (options.swipeEnabled) {
+        [self mdc_setupPanGestureRecognizer];
+    }
 }
 
 - (void)mdc_swipe:(MDCSwipeDirection)direction {
