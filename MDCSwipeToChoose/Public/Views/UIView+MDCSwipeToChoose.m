@@ -244,14 +244,6 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
     if (panGestureRecognizer.state == UIGestureRecognizerStateBegan) {
         self.mdc_viewState.originalCenter = view.center;
         self.mdc_viewState.originalTransform = view.layer.transform;
-
-        // If the pan gesture originated at the top half of the view, rotate the view
-        // away from the center. Otherwise, rotate towards the center.
-        if ([panGestureRecognizer locationInView:view].y < view.center.y) {
-            self.mdc_viewState.rotationDirection = MDCRotationAwayFromCenter;
-        } else {
-            self.mdc_viewState.rotationDirection = MDCRotationTowardsCenter;
-        }
     } else if (panGestureRecognizer.state == UIGestureRecognizerStateEnded) {
         // Either move the view back to its original position or move it off screen.
         [self mdc_finalizePosition];

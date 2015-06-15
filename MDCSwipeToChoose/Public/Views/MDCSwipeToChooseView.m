@@ -76,12 +76,9 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 65.f;
 }
 
 - (void)constructYesView {
-    CGFloat yOrigin = (self.options.yesImage ? MDCSwipeToChooseViewImageTopPadding : MDCSwipeToChooseViewTopPadding);
-
-    CGRect frame = CGRectMake(MDCSwipeToChooseViewHorizontalPadding,
-                              yOrigin,
-                              CGRectGetMidX(self.imageView.bounds),
-                              MDCSwipeToChooseViewLabelWidth);
+    CGFloat width = self.imageView.frame.size.width - 2*MDCSwipeToChooseViewHorizontalPadding;
+    CGFloat height = self.imageView.frame.size.height/4;
+    CGRect frame = CGRectMake(MDCSwipeToChooseViewHorizontalPadding, self.imageView.frame.size.height/2 - height/2, width, height);
     if (self.options.yesImage) {
         self.yesView = [[UIImageView alloc] initWithImage:self.options.yesImage];
         self.yesView.frame = frame;
@@ -97,13 +94,9 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 65.f;
 }
 
 - (void)constructNoView {
-    CGFloat width = CGRectGetMidX(self.imageView.bounds);
-    CGFloat xOrigin = CGRectGetMaxX(self.imageView.bounds) - width - MDCSwipeToChooseViewHorizontalPadding;
-    CGFloat yOrigin = (self.options.noImage ? MDCSwipeToChooseViewImageTopPadding : MDCSwipeToChooseViewTopPadding);
-    CGRect frame = CGRectMake(xOrigin,
-                              yOrigin,
-                              width,
-                              MDCSwipeToChooseViewLabelWidth);
+    CGFloat width = self.imageView.frame.size.width - 2*MDCSwipeToChooseViewHorizontalPadding;
+    CGFloat height = self.imageView.frame.size.height/4;
+    CGRect frame = CGRectMake(MDCSwipeToChooseViewHorizontalPadding, self.imageView.frame.size.height/2 - height/2, width, height);
     if (self.options.noImage) {
         self.noView = [[UIImageView alloc] initWithImage:self.options.noImage];
         self.noView.frame = frame;
@@ -119,22 +112,18 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 65.f;
 }
 
 - (void)constructMaybeView {
-  CGFloat width = CGRectGetMidX(self.imageView.bounds);
-  CGFloat xOrigin = CGRectGetMaxX(self.imageView.bounds) - width - MDCSwipeToChooseViewHorizontalPadding;
-  CGFloat yOrigin = (self.options.maybeImage ? MDCSwipeToChooseViewImageTopPadding : MDCSwipeToChooseViewTopPadding);
-  CGRect frame = CGRectMake(xOrigin,
-                            yOrigin,
-                            width,
-                            MDCSwipeToChooseViewLabelWidth);
-  if (self.options.maybeImage) {
-    self.maybeView = [[UIImageView alloc] initWithImage:self.options.maybeImage];
-    self.maybeView.frame = frame;
-    self.maybeView.contentMode = UIViewContentModeScaleAspectFit;
-  } else {
-    self.maybeView = [[UIView alloc] initWithFrame:frame];
-    [self.maybeView constructBorderedLabelWithText:self.options.maybeText
-                                          color:self.options.maybeColor
-                                          angle:self.options.maybeRotationAngle];
+    CGFloat width = self.imageView.frame.size.width - 2*MDCSwipeToChooseViewHorizontalPadding;
+    CGFloat height = self.imageView.frame.size.height/4;
+    CGRect frame = CGRectMake(MDCSwipeToChooseViewHorizontalPadding, self.imageView.frame.size.height/2 - height/2, width, height);
+    if (self.options.maybeImage) {
+        self.maybeView = [[UIImageView alloc] initWithImage:self.options.maybeImage];
+        self.maybeView.frame = frame;
+        self.maybeView.contentMode = UIViewContentModeScaleAspectFit;
+    } else {
+        self.maybeView = [[UIView alloc] initWithFrame:frame];
+        [self.maybeView constructBorderedLabelWithText:self.options.maybeText
+                                                 color:self.options.maybeColor
+                                                 angle:self.options.maybeRotationAngle];
   }
   self.maybeView.alpha = 0.f;
   [self.imageView addSubview:self.maybeView];
