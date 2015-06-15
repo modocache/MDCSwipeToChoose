@@ -174,13 +174,19 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
 
 - (void)mdc_executeOnPanBlockForTranslation:(CGPoint)translation {
     if (self.mdc_options.onPan) {
-        CGFloat thresholdRatio = MIN(1.f, fabs(translation.x)/self.mdc_options.threshold);
+        CGFloat thresholdRatio;
 
         MDCSwipeDirection direction = MDCSwipeDirectionNone;
-        if (translation.x > 0.f) {
-            direction = MDCSwipeDirectionRight;
-        } else if (translation.x < 0.f) {
-            direction = MDCSwipeDirectionLeft;
+        if (ABS(translation.y) > ABS(translation.x)) {
+            direction = MDCSwipeDirectionVertical;
+            thresholdRatio = MIN(1.f, fabs(translation.y)/self.mdc_options.threshold);
+        } else {
+            thresholdRatio = MIN(1.f, fabs(translation.x)/self.mdc_options.threshold);
+            if (translation.x > 0.f) {
+                direction = MDCSwipeDirectionRight;
+            } else if (translation.x < 0.f) {
+                direction = MDCSwipeDirectionLeft;
+            }
         }
 
         MDCPanState *state = [MDCPanState new];
@@ -252,8 +258,7 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
         // the updates via the pan block.
         CGPoint translation = [panGestureRecognizer translationInView:view];
         view.center = MDCCGPointAdd(self.mdc_viewState.originalCenter, translation);
-        [self mdc_rotateForTranslation:translation
-                     rotationDirection:self.mdc_viewState.rotationDirection];
+        [self mdc_rotateForTranslation:translation rotationDirection:self.mdc_viewState.rotationDirection];
         [self mdc_executeOnPanBlockForTranslation:translation];
     }
 }
