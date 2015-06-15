@@ -165,9 +165,9 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 65.f;
             maybeImageView.alpha = 0.f;
         }
         else if (state.direction == MDCSwipeDirectionVertical) {
-          yesImageView.alpha = 0.f;
-          noImageView.alpha = 0.f;
-          maybeImageView.alpha = state.thresholdRatio;
+            yesImageView.alpha = 0.f;
+            noImageView.alpha = 0.f;
+            maybeImageView.alpha = state.thresholdRatio;
         }
 
         if (weakself.options.onPan) {

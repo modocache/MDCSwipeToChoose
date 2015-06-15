@@ -35,7 +35,7 @@
     if (self) {
         _swipeCancelledAnimationDuration = 0.2;
         _swipeCancelledAnimationOptions = UIViewAnimationOptionCurveEaseOut;
-        _swipeAnimationDuration = 1.0f;
+        _swipeAnimationDuration = 0.3f;
         _swipeAnimationOptions = UIViewAnimationOptionCurveEaseIn;
         _rotationFactor = 3.f;
 

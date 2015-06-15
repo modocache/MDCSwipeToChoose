@@ -118,9 +118,9 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
     MDCSwipeDirection direction = [self mdc_directionOfExceededThreshold];
     switch (direction) {
         case MDCSwipeDirectionRight:
+        case MDCSwipeDirectionVertical:
         case MDCSwipeDirectionLeft: {
-            CGPoint translation = MDCCGPointSubtract(self.center,
-                                                     self.mdc_viewState.originalCenter);
+            CGPoint translation = MDCCGPointSubtract(self.center, self.mdc_viewState.originalCenter);
             [self mdc_exitSuperviewFromTranslation:translation];
             break;
         }
