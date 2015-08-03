@@ -45,7 +45,6 @@ The following is an example of how you can use `MDCSwipeToChooseView` to display
 
     // You can customize MDCSwipeToChooseView using MDCSwipeToChooseViewOptions.
     MDCSwipeToChooseViewOptions *options = [MDCSwipeToChooseViewOptions new];
-    options.delegate = self;
     options.likedText = @"Keep";
     options.likedColor = [UIColor blueColor];
     options.nopeText = @"Delete";
