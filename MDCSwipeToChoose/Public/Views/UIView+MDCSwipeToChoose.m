@@ -230,12 +230,20 @@ const void * const MDCViewPanGestureKey = &MDCViewPanGestureKey;
 
     BOOL velocityThresholdMet = ABS([self.mdc_panGesture velocityInView:self].x) > self.mdc_options.velocityThreshold;;
 
-    if ([self.mdc_panGesture velocityInView:self].x > 0) {
+    CGFloat xVelocity = [self.mdc_panGesture velocityInView:self].x;
+
+    if (xVelocity > 0) {
         if ((self.center.x > self.mdc_viewState.originalCenter.x + self.mdc_options.threshold) || velocityThresholdMet) {
             return MDCSwipeDirectionRight;
         }
-    } else {
+    } else if (xVelocity < 0) {
         if ((self.center.x < self.mdc_viewState.originalCenter.x - self.mdc_options.threshold) || velocityThresholdMet) {
+            return MDCSwipeDirectionLeft;
+        }
+    } else {
+        if (self.center.x > self.mdc_viewState.originalCenter.x + self.mdc_options.threshold) {
+            return MDCSwipeDirectionRight;
+        } else if (self.center.x < self.mdc_viewState.originalCenter.x - self.mdc_options.threshold) {
             return MDCSwipeDirectionLeft;
         }
     }
