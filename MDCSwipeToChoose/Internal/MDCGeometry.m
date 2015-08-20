@@ -23,6 +23,7 @@
 //
 
 #import "MDCGeometry.h"
+#import "MDCSwipeDirection.h"
 
 #pragma mark - Public Interface
 
@@ -42,8 +43,12 @@ CGFloat MDCDegreesToRadians(const CGFloat degrees) {
 
 CGRect MDCCGRectExtendedOutOfBounds(const CGRect rect,
                                     const CGRect bounds,
-                                    const CGPoint translation) {
+                                    CGPoint translation,
+                                    MDCSwipeDirection direction) {
     CGRect destination = rect;
+    if (CGRectEqualToRect(rect, bounds)) {
+        translation = CGPointMake(direction == MDCSwipeDirectionLeft ? -1 : 1, 0);
+    }
     while (!CGRectIsNull(CGRectIntersection(bounds, destination))) {
         destination = CGRectMake(CGRectGetMinX(destination) + translation.x,
                                  CGRectGetMinY(destination) + translation.y,

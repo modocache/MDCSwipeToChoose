@@ -77,6 +77,11 @@ typedef void (^MDCSwipeToChooseOnCancelBlock)(UIView *swipedView);
 @property (nonatomic, assign) CGFloat threshold;
 
 /*!
+ * The velocity that a view must be panned in order to constitue a selection.
+ */
+@property (nonatomic, assign) CGFloat velocityThreshold;
+
+/*!
  * When a view is panned, it is rotated slightly. Adjust this value to increase or decrease
  * the angle of rotation.
  */

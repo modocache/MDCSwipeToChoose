@@ -30,6 +30,7 @@
 
 const void * const MDCSwipeOptionsKey = &MDCSwipeOptionsKey;
 const void * const MDCViewStateKey = &MDCViewStateKey;
+const void * const MDCViewPanGestureKey = &MDCViewPanGestureKey;
 
 @implementation UIView (MDCSwipeToChoose)
 
@@ -94,6 +95,14 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
     return objc_getAssociatedObject(self, MDCViewStateKey);
 }
 
+- (void)setMdc_panGesture:(UIPanGestureRecognizer *)panGesture {
+    objc_setAssociatedObject(self, MDCViewPanGestureKey, panGesture, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (UIPanGestureRecognizer *)mdc_panGesture {
+    return objc_getAssociatedObject(self, MDCViewPanGestureKey);
+}
+
 #pragma mark Setup
 
 - (void)mdc_swipeToChooseSetupIfNecessary {
@@ -107,6 +116,7 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
     UIPanGestureRecognizer *panGestureRecognizer =
     [[UIPanGestureRecognizer alloc] initWithTarget:self
                                             action:action];
+    self.mdc_panGesture = panGestureRecognizer;
     [self addGestureRecognizer:panGestureRecognizer];
 }
 
@@ -217,13 +227,20 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
 }
 
 - (MDCSwipeDirection)mdc_directionOfExceededThreshold {
-    if (self.center.x > self.mdc_viewState.originalCenter.x + self.mdc_options.threshold) {
-        return MDCSwipeDirectionRight;
-    } else if (self.center.x < self.mdc_viewState.originalCenter.x - self.mdc_options.threshold) {
-        return MDCSwipeDirectionLeft;
+
+    BOOL velocityThresholdMet = ABS([self.mdc_panGesture velocityInView:self].x) > self.mdc_options.velocityThreshold;;
+
+    if ([self.mdc_panGesture velocityInView:self].x > 0) {
+        if ((self.center.x > self.mdc_viewState.originalCenter.x + self.mdc_options.threshold) || velocityThresholdMet) {
+            return MDCSwipeDirectionRight;
+        }
     } else {
-        return MDCSwipeDirectionNone;
+        if ((self.center.x < self.mdc_viewState.originalCenter.x - self.mdc_options.threshold) || velocityThresholdMet) {
+            return MDCSwipeDirectionLeft;
+        }
     }
+
+    return MDCSwipeDirectionNone;
 }
 
 #pragma mark Gesture Recognizer Events

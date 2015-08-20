@@ -38,6 +38,7 @@
         _swipeAnimationDuration = 0.1;
         _swipeAnimationOptions = UIViewAnimationOptionCurveEaseIn;
         _rotationFactor = 3.f;
+        _velocityThreshold = 500.f;
 
         _onChosen = [[self class] exitScreenOnChosenWithDuration:0.1
                                                          options:UIViewAnimationOptionCurveLinear];
@@ -52,7 +53,8 @@
     return ^(MDCSwipeResult *state) {
         CGRect destination = MDCCGRectExtendedOutOfBounds(state.view.frame,
                                                           state.view.superview.bounds,
-                                                          state.translation);
+                                                          state.translation,
+                                                          state.direction);
         [UIView animateWithDuration:duration
                               delay:0.0
                             options:options
