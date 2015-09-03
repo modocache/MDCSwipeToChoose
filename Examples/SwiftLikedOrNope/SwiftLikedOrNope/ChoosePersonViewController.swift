@@ -163,7 +163,7 @@ class ChoosePersonViewController: UIViewController, MDCSwipeToChooseDelegate {
     func constructNopeButton() -> Void{
         let button:UIButton =  UIButton.buttonWithType(UIButtonType.System) as! UIButton
         let image:UIImage = UIImage(named:"nope")!
-        button.frame = CGRectMake(ChoosePersonButtonHorizontalPadding, CGRectGetMaxY(self.backCardView.frame) + ChoosePersonButtonVerticalPadding, image.size.width, image.size.height)
+        button.frame = CGRectMake(ChoosePersonButtonHorizontalPadding, CGRectGetMaxY(self.frontCardView.frame) + ChoosePersonButtonVerticalPadding, image.size.width, image.size.height)
         button.setImage(image, forState: UIControlState.Normal)
         button.tintColor = UIColor(red: 247.0/255.0, green: 91.0/255.0, blue: 37.0/255.0, alpha: 1.0)
         button.addTarget(self, action: "nopeFrontCardView", forControlEvents: UIControlEvents.TouchUpInside)
@@ -173,7 +173,7 @@ class ChoosePersonViewController: UIViewController, MDCSwipeToChooseDelegate {
     func constructLikedButton() -> Void{
         let button:UIButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
         let image:UIImage = UIImage(named:"liked")!
-        button.frame = CGRectMake(CGRectGetMaxX(self.view.frame) - image.size.width - ChoosePersonButtonHorizontalPadding, CGRectGetMaxY(self.backCardView.frame) + ChoosePersonButtonVerticalPadding, image.size.width, image.size.height)
+        button.frame = CGRectMake(CGRectGetMaxX(self.view.frame) - image.size.width - ChoosePersonButtonHorizontalPadding, CGRectGetMaxY(self.frontCardView.frame) + ChoosePersonButtonVerticalPadding, image.size.width, image.size.height)
         button.setImage(image, forState:UIControlState.Normal)
         button.tintColor = UIColor(red: 29.0/255.0, green: 245.0/255.0, blue: 106.0/255.0, alpha: 1.0)
         button.addTarget(self, action: "likeFrontCardView", forControlEvents: UIControlEvents.TouchUpInside)
