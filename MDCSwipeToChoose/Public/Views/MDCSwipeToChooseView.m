@@ -76,7 +76,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 65.f;
 
 - (void)constructLikedView {
     CGFloat yOrigin = (self.options.likedImage ? MDCSwipeToChooseViewImageTopPadding : MDCSwipeToChooseViewTopPadding);
-
+    
     CGRect frame = CGRectMake(MDCSwipeToChooseViewHorizontalPadding,
                               yOrigin,
                               CGRectGetMidX(self.imageView.bounds),
@@ -89,6 +89,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 65.f;
         self.likedView = [[UIView alloc] initWithFrame:frame];
         [self.likedView constructBorderedLabelWithText:self.options.likedText
                                                  color:self.options.likedColor
+                                                  size:self.options.likedTextSize
                                                  angle:self.options.likedRotationAngle];
     }
     self.likedView.alpha = 0.f;
@@ -111,6 +112,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 65.f;
         self.nopeView = [[UIView alloc] initWithFrame:frame];
         [self.nopeView constructBorderedLabelWithText:self.options.nopeText
                                                 color:self.options.nopeColor
+                                                 size:self.options.nopeTextSize
                                                 angle:self.options.nopeRotationAngle];
     }
     self.nopeView.alpha = 0.f;
@@ -121,7 +123,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 65.f;
     MDCSwipeOptions *options = [MDCSwipeOptions new];
     options.delegate = self.options.delegate;
     options.threshold = self.options.threshold;
-
+    
     __block UIView *likedImageView = self.likedView;
     __block UIView *nopeImageView = self.nopeView;
     __weak MDCSwipeToChooseView *weakself = self;
@@ -136,12 +138,12 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 65.f;
             likedImageView.alpha = state.thresholdRatio;
             nopeImageView.alpha = 0.f;
         }
-
+        
         if (weakself.options.onPan) {
             weakself.options.onPan(state);
         }
     };
-
+    
     [self mdc_swipeToChooseSetup:options];
 }
 

@@ -28,6 +28,7 @@
 
 - (void)constructBorderedLabelWithText:(NSString *)text
                                  color:(UIColor *)color
+                                  size:(CGFloat)size
                                  angle:(CGFloat)angle;
 
 @end
