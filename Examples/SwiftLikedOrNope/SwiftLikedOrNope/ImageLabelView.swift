@@ -29,8 +29,8 @@ class ImagelabelView: UIView{
     var imageView: UIImageView!
     var label: UILabel!
     
-    override init(){
-        super.init()
+    init(){
+        super.init(frame: CGRectZero)
         imageView = UIImageView()
         label = UILabel()
     }
@@ -43,8 +43,13 @@ class ImagelabelView: UIView{
     }
     
     required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+        fatalError("init(coder:) has not been implemented")
     }
+    
+    /*
+    required init(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }*/
     
     func constructImageView(image:UIImage) -> Void{
         
