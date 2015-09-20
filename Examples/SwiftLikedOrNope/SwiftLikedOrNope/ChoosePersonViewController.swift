@@ -43,9 +43,8 @@ class ChoosePersonViewController: UIViewController, MDCSwipeToChooseDelegate {
         self.people = defaultPeople()
         // Here you can init your properties
     }
-    override init(){
-        super.init()
-    }
+
+    
     override func viewDidLoad(){
         super.viewDidLoad()
         
