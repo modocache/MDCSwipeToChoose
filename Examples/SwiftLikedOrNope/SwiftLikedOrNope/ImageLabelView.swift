@@ -29,8 +29,8 @@ class ImagelabelView: UIView{
     var imageView: UIImageView!
     var label: UILabel!
     
-    override init(){
-        super.init()
+    override init(frame: CGRect){
+        super.init(frame: frame)
         imageView = UIImageView()
         label = UILabel()
     }
