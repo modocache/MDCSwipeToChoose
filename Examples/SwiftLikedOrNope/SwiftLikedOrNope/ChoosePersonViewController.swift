@@ -34,7 +34,7 @@ class ChoosePersonViewController: UIViewController, MDCSwipeToChooseDelegate {
     var frontCardView:ChoosePersonView!
     var backCardView:ChoosePersonView!
     
-    required init(coder aDecoder: NSCoder) {
+    required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         self.people = defaultPeople()
     }
@@ -43,15 +43,14 @@ class ChoosePersonViewController: UIViewController, MDCSwipeToChooseDelegate {
         self.people = defaultPeople()
         // Here you can init your properties
     }
-    override init(){
-        super.init()
-    }
+
+    
     override func viewDidLoad(){
         super.viewDidLoad()
         
         // Display the first ChoosePersonView in front. Users can swipe to indicate
         // whether they like or dislike the person displayed.
-        self.setFrontCardView(self.popPersonViewWithFrame(frontCardViewFrame())!)
+        self.setMyFrontCardView(self.popPersonViewWithFrame(frontCardViewFrame())!)
         self.view.addSubview(self.frontCardView)
         
         // Display the second ChoosePersonView in back. This view controller uses
@@ -73,7 +72,7 @@ class ChoosePersonViewController: UIViewController, MDCSwipeToChooseDelegate {
     // This is called when a user didn't fully swipe left or right.
     func viewDidCancelSwipe(view: UIView) -> Void{
         
-        println("You couldn't decide on \(self.currentPerson.Name)");
+        print("You couldn't decide on \(self.currentPerson.Name)");
     }
     
     // This is called then a user swipes the view fully left or right.
@@ -82,11 +81,11 @@ class ChoosePersonViewController: UIViewController, MDCSwipeToChooseDelegate {
         // MDCSwipeToChooseView shows "NOPE" on swipes to the left,
         // and "LIKED" on swipes to the right.
         if(wasChosenWithDirection == MDCSwipeDirection.Left){
-            println("You noped: \(self.currentPerson.Name)")
+            print("You noped: \(self.currentPerson.Name)")
         }
         else{
             
-            println("You liked: \(self.currentPerson.Name)")
+            print("You liked: \(self.currentPerson.Name)")
         }
         
         // MDCSwipeToChooseView removes the view from the view hierarchy
@@ -94,7 +93,7 @@ class ChoosePersonViewController: UIViewController, MDCSwipeToChooseDelegate {
         // MDCSwipeOptions class). Since the front card view is gone, we
         // move the back card to the front, and create a new back card.
         if(self.backCardView != nil){
-            self.setFrontCardView(self.backCardView)
+            self.setMyFrontCardView(self.backCardView)
         }
         
         backCardView = self.popPersonViewWithFrame(self.backCardViewFrame())
@@ -108,7 +107,7 @@ class ChoosePersonViewController: UIViewController, MDCSwipeToChooseDelegate {
                 },completion:nil)
         }
     }
-    func setFrontCardView(frontCardView:ChoosePersonView) -> Void{
+    func setMyFrontCardView(frontCardView:ChoosePersonView) -> Void{
         
         // Keep track of the person currently being chosen.
         // Quick and dirty, just for the purposes of this sample app.
@@ -132,12 +131,12 @@ class ChoosePersonViewController: UIViewController, MDCSwipeToChooseDelegate {
         // Each take an "options" argument. Here, we specify the view controller as
         // a delegate, and provide a custom callback that moves the back card view
         // based on how far the user has panned the front card view.
-        var options:MDCSwipeToChooseViewOptions = MDCSwipeToChooseViewOptions()
+        let options:MDCSwipeToChooseViewOptions = MDCSwipeToChooseViewOptions()
         options.delegate = self
         //options.threshold = 160.0
         options.onPan = { state -> Void in
             if(self.backCardView != nil){
-                var frame:CGRect = self.frontCardViewFrame()
+                let frame:CGRect = self.frontCardViewFrame()
                 self.backCardView.frame = CGRectMake(frame.origin.x, frame.origin.y-(state.thresholdRatio * 10.0), CGRectGetWidth(frame), CGRectGetHeight(frame))
             }
         }
@@ -145,23 +144,23 @@ class ChoosePersonViewController: UIViewController, MDCSwipeToChooseDelegate {
         // Create a personView with the top person in the people array, then pop
         // that person off the stack.
         
-        var personView:ChoosePersonView = ChoosePersonView(frame: frame, person: self.people[0], options: options)
+        let personView:ChoosePersonView = ChoosePersonView(frame: frame, person: self.people[0], options: options)
         self.people.removeAtIndex(0)
         return personView
         
     }
     func frontCardViewFrame() -> CGRect{
-        var horizontalPadding:CGFloat = 20.0
-        var topPadding:CGFloat = 60.0
-        var bottomPadding:CGFloat = 200.0
+        let horizontalPadding:CGFloat = 20.0
+        let topPadding:CGFloat = 60.0
+        let bottomPadding:CGFloat = 200.0
         return CGRectMake(horizontalPadding,topPadding,CGRectGetWidth(self.view.frame) - (horizontalPadding * 2), CGRectGetHeight(self.view.frame) - bottomPadding)
     }
     func backCardViewFrame() ->CGRect{
-        var frontFrame:CGRect = frontCardViewFrame()
+        let frontFrame:CGRect = frontCardViewFrame()
         return CGRectMake(frontFrame.origin.x, frontFrame.origin.y + 10.0, CGRectGetWidth(frontFrame), CGRectGetHeight(frontFrame))
     }
     func constructNopeButton() -> Void{
-        let button:UIButton =  UIButton.buttonWithType(UIButtonType.System) as! UIButton
+        let button:UIButton =  UIButton(type: UIButtonType.System)
         let image:UIImage = UIImage(named:"nope")!
         button.frame = CGRectMake(ChoosePersonButtonHorizontalPadding, CGRectGetMaxY(self.backCardView.frame) + ChoosePersonButtonVerticalPadding, image.size.width, image.size.height)
         button.setImage(image, forState: UIControlState.Normal)
@@ -171,7 +170,7 @@ class ChoosePersonViewController: UIViewController, MDCSwipeToChooseDelegate {
     }
     
     func constructLikedButton() -> Void{
-        let button:UIButton = UIButton.buttonWithType(UIButtonType.System) as! UIButton
+        let button:UIButton = UIButton(type: UIButtonType.System)
         let image:UIImage = UIImage(named:"liked")!
         button.frame = CGRectMake(CGRectGetMaxX(self.view.frame) - image.size.width - ChoosePersonButtonHorizontalPadding, CGRectGetMaxY(self.backCardView.frame) + ChoosePersonButtonVerticalPadding, image.size.width, image.size.height)
         button.setImage(image, forState:UIControlState.Normal)

@@ -25,7 +25,7 @@
 
 import UIKit
 
-class Person: NSObject, Printable {
+class Person: NSObject {
     
     let Name: NSString
     let Image: UIImage!

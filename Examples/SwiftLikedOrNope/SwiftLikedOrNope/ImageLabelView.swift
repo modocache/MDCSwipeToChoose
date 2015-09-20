@@ -29,8 +29,8 @@ class ImagelabelView: UIView{
     var imageView: UIImageView!
     var label: UILabel!
     
-    override init(){
-        super.init()
+    override init(frame: CGRect){
+        super.init(frame: frame)
         imageView = UIImageView()
         label = UILabel()
     }
@@ -42,8 +42,8 @@ class ImagelabelView: UIView{
         constructLabel(text)
     }
     
-    required init(coder aDecoder: NSCoder) {
-        super.init(coder: aDecoder)
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)!
     }
     
     func constructImageView(image:UIImage) -> Void{
@@ -60,7 +60,7 @@ class ImagelabelView: UIView{
     }
     
     func constructLabel(text:String) -> Void{
-        var height:CGFloat = 18.0
+        let height:CGFloat = 18.0
         let frame2 = CGRectMake(0,
             CGRectGetMaxY(self.imageView.frame),
             CGRectGetWidth(self.bounds),
