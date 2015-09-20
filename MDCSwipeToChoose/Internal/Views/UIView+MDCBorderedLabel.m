@@ -34,6 +34,7 @@
     self.layer.borderColor = color.CGColor;
     self.layer.borderWidth = 5.f;
     self.layer.cornerRadius = 10.f;
+    self.layer.backgroundColor = [[UIColor blackColor] colorWithAlphaComponent:0.7f].CGColor;
 
     UILabel *label = [[UILabel alloc] initWithFrame:self.bounds];
     label.text = [text uppercaseString];

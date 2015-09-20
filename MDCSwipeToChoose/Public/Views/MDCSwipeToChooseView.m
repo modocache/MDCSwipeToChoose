@@ -30,9 +30,6 @@
 #import <QuartzCore/QuartzCore.h>
 
 static CGFloat const MDCSwipeToChooseViewHorizontalPadding = 10.f;
-static CGFloat const MDCSwipeToChooseViewTopPadding = 20.f;
-static CGFloat const MDCSwipeToChooseViewImageTopPadding = 100.f;
-static CGFloat const MDCSwipeToChooseViewLabelWidth = 65.f;
 
 @interface MDCSwipeToChooseView ()
 @property (nonatomic, strong) MDCSwipeToChooseViewOptions *options;
@@ -48,8 +45,9 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 65.f;
         _options = options ? options : [MDCSwipeToChooseViewOptions new];
         [self setupView];
         [self constructImageView];
-        [self constructLikedView];
-        [self constructNopeView];
+        [self constructYesView];
+        [self constructNoView];
+        [self constructMaybeView];
         [self setupSwipeToChoose];
     }
     return self;
@@ -74,47 +72,58 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 65.f;
     [self addSubview:_imageView];
 }
 
-- (void)constructLikedView {
-    CGFloat yOrigin = (self.options.likedImage ? MDCSwipeToChooseViewImageTopPadding : MDCSwipeToChooseViewTopPadding);
-
-    CGRect frame = CGRectMake(MDCSwipeToChooseViewHorizontalPadding,
-                              yOrigin,
-                              CGRectGetMidX(self.imageView.bounds),
-                              MDCSwipeToChooseViewLabelWidth);
-    if (self.options.likedImage) {
-        self.likedView = [[UIImageView alloc] initWithImage:self.options.likedImage];
-        self.likedView.frame = frame;
-        self.likedView.contentMode = UIViewContentModeScaleAspectFit;
+- (void)constructYesView {
+    CGFloat width = self.imageView.frame.size.width - 2*MDCSwipeToChooseViewHorizontalPadding;
+    CGFloat height = self.imageView.frame.size.height/4;
+    CGRect frame = CGRectMake(MDCSwipeToChooseViewHorizontalPadding, self.imageView.frame.size.height/2 - height/2, width, height);
+    if (self.options.yesImage) {
+        self.yesView = [[UIImageView alloc] initWithImage:self.options.yesImage];
+        self.yesView.frame = frame;
+        self.yesView.contentMode = UIViewContentModeScaleAspectFit;
     } else {
-        self.likedView = [[UIView alloc] initWithFrame:frame];
-        [self.likedView constructBorderedLabelWithText:self.options.likedText
-                                                 color:self.options.likedColor
-                                                 angle:self.options.likedRotationAngle];
+        self.yesView = [[UIView alloc] initWithFrame:frame];
+        [self.yesView constructBorderedLabelWithText:self.options.yesText
+                                                 color:self.options.yesColor
+                                                 angle:self.options.yesRotationAngle];
     }
-    self.likedView.alpha = 0.f;
-    [self.imageView addSubview:self.likedView];
+    self.yesView.alpha = 0.f;
+    [self.imageView addSubview:self.yesView];
 }
 
-- (void)constructNopeView {
-    CGFloat width = CGRectGetMidX(self.imageView.bounds);
-    CGFloat xOrigin = CGRectGetMaxX(self.imageView.bounds) - width - MDCSwipeToChooseViewHorizontalPadding;
-    CGFloat yOrigin = (self.options.nopeImage ? MDCSwipeToChooseViewImageTopPadding : MDCSwipeToChooseViewTopPadding);
-    CGRect frame = CGRectMake(xOrigin,
-                              yOrigin,
-                              width,
-                              MDCSwipeToChooseViewLabelWidth);
-    if (self.options.nopeImage) {
-        self.nopeView = [[UIImageView alloc] initWithImage:self.options.nopeImage];
-        self.nopeView.frame = frame;
-        self.nopeView.contentMode = UIViewContentModeScaleAspectFit;
+- (void)constructNoView {
+    CGFloat width = self.imageView.frame.size.width - 2*MDCSwipeToChooseViewHorizontalPadding;
+    CGFloat height = self.imageView.frame.size.height/4;
+    CGRect frame = CGRectMake(MDCSwipeToChooseViewHorizontalPadding, self.imageView.frame.size.height/2 - height/2, width, height);
+    if (self.options.noImage) {
+        self.noView = [[UIImageView alloc] initWithImage:self.options.noImage];
+        self.noView.frame = frame;
+        self.noView.contentMode = UIViewContentModeScaleAspectFit;
     } else {
-        self.nopeView = [[UIView alloc] initWithFrame:frame];
-        [self.nopeView constructBorderedLabelWithText:self.options.nopeText
-                                                color:self.options.nopeColor
-                                                angle:self.options.nopeRotationAngle];
+        self.noView = [[UIView alloc] initWithFrame:frame];
+        [self.noView constructBorderedLabelWithText:self.options.noText
+                                                color:self.options.noColor
+                                                angle:self.options.noRotationAngle];
     }
-    self.nopeView.alpha = 0.f;
-    [self.imageView addSubview:self.nopeView];
+    self.noView.alpha = 0.f;
+    [self.imageView addSubview:self.noView];
+}
+
+- (void)constructMaybeView {
+    CGFloat width = self.imageView.frame.size.width - 2*MDCSwipeToChooseViewHorizontalPadding;
+    CGFloat height = self.imageView.frame.size.height/4;
+    CGRect frame = CGRectMake(MDCSwipeToChooseViewHorizontalPadding, self.imageView.frame.size.height/2 - height/2, width, height);
+    if (self.options.maybeImage) {
+        self.maybeView = [[UIImageView alloc] initWithImage:self.options.maybeImage];
+        self.maybeView.frame = frame;
+        self.maybeView.contentMode = UIViewContentModeScaleAspectFit;
+    } else {
+        self.maybeView = [[UIView alloc] initWithFrame:frame];
+        [self.maybeView constructBorderedLabelWithText:self.options.maybeText
+                                                 color:self.options.maybeColor
+                                                 angle:self.options.maybeRotationAngle];
+  }
+  self.maybeView.alpha = 0.f;
+  [self.imageView addSubview:self.maybeView];
 }
 
 - (void)setupSwipeToChoose {
@@ -122,19 +131,29 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 65.f;
     options.delegate = self.options.delegate;
     options.threshold = self.options.threshold;
 
-    __block UIView *likedImageView = self.likedView;
-    __block UIView *nopeImageView = self.nopeView;
+    __block UIView *yesImageView = self.yesView;
+    __block UIView *noImageView = self.noView;
+    __block UIView *maybeImageView = self.maybeView;
+
     __weak MDCSwipeToChooseView *weakself = self;
     options.onPan = ^(MDCPanState *state) {
         if (state.direction == MDCSwipeDirectionNone) {
-            likedImageView.alpha = 0.f;
-            nopeImageView.alpha = 0.f;
+            yesImageView.alpha = 0.f;
+            noImageView.alpha = 0.f;
+            maybeImageView.alpha = 0.f;
         } else if (state.direction == MDCSwipeDirectionLeft) {
-            likedImageView.alpha = 0.f;
-            nopeImageView.alpha = state.thresholdRatio;
+            yesImageView.alpha = 0.f;
+            noImageView.alpha = state.thresholdRatio;
+            maybeImageView.alpha = 0.f;
         } else if (state.direction == MDCSwipeDirectionRight) {
-            likedImageView.alpha = state.thresholdRatio;
-            nopeImageView.alpha = 0.f;
+            yesImageView.alpha = state.thresholdRatio;
+            noImageView.alpha = 0.f;
+            maybeImageView.alpha = 0.f;
+        }
+        else if (state.direction == MDCSwipeDirectionVertical) {
+            yesImageView.alpha = 0.f;
+            noImageView.alpha = 0.f;
+            maybeImageView.alpha = state.thresholdRatio;
         }
 
         if (weakself.options.onPan) {

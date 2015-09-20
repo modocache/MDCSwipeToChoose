@@ -37,52 +37,76 @@
 @property (nonatomic, weak) id<MDCSwipeToChooseDelegate> delegate;
 
 /*!
- * The text displayed in the `likedView`. A default value is provided in the
+ * The text displayed in the `yesView`. A default value is provided in the
  * `-init` method.
  */
-@property (nonatomic, copy) NSString *likedText;
+@property (nonatomic, copy) NSString *yesText;
 
 /*!
- * The color of the text and border of the `likedView`. A default value is provided in the
+ * The color of the text and border of the `yesView`. A default value is provided in the
  * `-init` method.
  */
-@property (nonatomic, strong) UIColor *likedColor;
+@property (nonatomic, strong) UIColor *yesColor;
 
 /*!
- * The image used to displayed in the `likeView`. If this is present, it will take
- * precedence over the likeText
+ * The image used to displayed in the `yesView`. If this is present, it will take
+ * precedence over the yesText
  */
-@property (nonatomic, strong) UIImage *likedImage;
+@property (nonatomic, strong) UIImage *yesImage;
 
 /*!
- * The rotation angle of the `likedView`. A default value is provided in the
+ * The rotation angle of the `yesView`. A default value is provided in the
  * `-init` method.
  */
-@property (nonatomic, assign) CGFloat likedRotationAngle;
+@property (nonatomic, assign) CGFloat yesRotationAngle;
 
 /*!
- * The text displayed in the `nopeView`. A default value is provided in the
+ * The text displayed in the `noView`. A default value is provided in the
  * `-init` method.
  */
-@property (nonatomic, copy) NSString *nopeText;
+@property (nonatomic, copy) NSString *noText;
 
 /*!
- * The color of the text and border of the `nopeView`. A default value is provided in the
+ * The color of the text and border of the `noView`. A default value is provided in the
  * `-init` method.
  */
-@property (nonatomic, strong) UIColor *nopeColor;
+@property (nonatomic, strong) UIColor *noColor;
 
 /*!
- * The image used to displayed in the `nopeView`. If this is present, it will take
- * precedence over the nopeText
+ * The image used to displayed in the `noView`. If this is present, it will take
+ * precedence over the noText
  */
-@property (nonatomic, strong) UIImage *nopeImage;
+@property (nonatomic, strong) UIImage *noImage;
 
 /*!
- * The rotation angle of the `nopeView`. A default value is provided in the
+ * The rotation angle of the `noView`. A default value is provided in the
  * `-init` method.
  */
-@property (nonatomic, assign) CGFloat nopeRotationAngle;
+@property (nonatomic, assign) CGFloat noRotationAngle;
+
+/*!
+ * The text displayed in the `noView`. A default value is provided in the
+ * `-init` method.
+ */
+@property (nonatomic, copy) NSString *maybeText;
+
+/*!
+ * The color of the text and border of the `maybeView`. A default value is provided in the
+ * `-init` method.
+ */
+@property (nonatomic, strong) UIColor *maybeColor;
+
+/*!
+ * The image used to displayed in the `maybeView`. If this is present, it will take
+ * precedence over the noText
+ */
+@property (nonatomic, strong) UIImage *maybeImage;
+
+/*!
+ * The rotation angle of the `maybeView`. A default value is provided in the
+ * `-init` method.
+ */
+@property (nonatomic, assign) CGFloat maybeRotationAngle;
 
 /*!
  * The distance, in pixels, that a view must be panned in order to constitue a selection.

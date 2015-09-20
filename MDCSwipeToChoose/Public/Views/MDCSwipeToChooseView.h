@@ -28,24 +28,29 @@
 
 /*!
  * A `UIView` subclass that acts nearly identically to the swipe-to-choose
- * views in Tinder.app. Swipe right to "like", left to "dislike".
+ * views in Tinder.app. Swipe right to "yes", left to "no", or up/down to "maybe".
  */
 @interface MDCSwipeToChooseView : UIView
 
 /*!
- * The main image to be displayed and then "liked" or "disliked".
+ * The main image to be displayed and then "yes'd" or "no'd".
  */
 @property (nonatomic, strong) UIImageView *imageView;
 
 /*!
- * The "liked" view, which fades in as the `MDCSwipeToChooseView` is panned to the right.
+ * The "yes" view, which fades in as the `MDCSwipeToChooseView` is panned to the right.
  */
-@property (nonatomic, strong) UIView *likedView;
+@property (nonatomic, strong) UIView *yesView;
 
 /*!
- * The "nope" view, which fades in as the `MDCSwipeToChooseView` is panned to the left.
+ * The "no" view, which fades in as the `MDCSwipeToChooseView` is panned to the left.
  */
-@property (nonatomic, strong) UIView *nopeView;
+@property (nonatomic, strong) UIView *noView;
+
+/*!
+ * The "maybeView" view, which fades in as the `MDCSwipeToChooseView` is panned to the up/down.
+ */
+@property (nonatomic, strong) UIView *maybeView;
 
 /*!
  * The designated initializer takes a `frame` and a set of options to customize

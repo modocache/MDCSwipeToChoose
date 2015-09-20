@@ -30,14 +30,18 @@
 - (instancetype)init {
     self = [super init];
     if (self) {
-        _likedText = [NSLocalizedString(@"liked", nil) uppercaseString];
-        _likedColor = [UIColor colorWith8BitRed:29.f green:245.f blue:106.f alpha:1.f];
-        _likedRotationAngle = -15.f;
+        _yesText = [NSLocalizedString(@"Yes", nil) uppercaseString];
+        _yesColor = [UIColor colorWith8BitRed:29.f green:245.f blue:106.f alpha:1.f];
+        _yesRotationAngle = -15.f;
 
-        _nopeText = [NSLocalizedString(@"nope", nil) uppercaseString];
-        _nopeColor = [UIColor colorWith8BitRed:247.f green:91.f blue:37.f alpha:1.f];
-        _nopeRotationAngle = 15.f;
-
+        _noText = [NSLocalizedString(@"No", nil) uppercaseString];
+        _noColor = [UIColor colorWith8BitRed:247.f green:91.f blue:37.f alpha:1.f];
+        _noRotationAngle = 15.f;
+      
+        _maybeText = [NSLocalizedString(@"Maybe", nil) uppercaseString];
+        _maybeColor = [UIColor colorWith8BitRed:227.f green:214.f blue:0.f alpha:1.f];
+        _maybeRotationAngle = 0.f;
+      
         _threshold = 100.f;
     }
     return self;
