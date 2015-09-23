@@ -46,7 +46,7 @@ CGRect MDCCGRectExtendedOutOfBounds(const CGRect rect,
                                     CGPoint translation,
                                     MDCSwipeDirection direction) {
     CGRect destination = rect;
-    if (CGRectEqualToRect(rect, bounds) || || CGPointEqualToPoint(translation, CGPointZero)) {
+    if (CGRectEqualToRect(rect, bounds) || CGPointEqualToPoint(translation, CGPointZero)) {
         translation = CGPointMake(direction == MDCSwipeDirectionLeft ? -10 : 10, 0);
     }
     while (!CGRectIsNull(CGRectIntersection(bounds, destination))) {
