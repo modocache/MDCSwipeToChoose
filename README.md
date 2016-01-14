@@ -115,7 +115,7 @@ To use objective-c code from swift, you need to use bridging-header.
 ```swift
 import UIKit
 
-// ... in a view controller
+// ... in a view controller that confirms to MDCSwipeToChooseDelegate protocol
 
 override func viewDidLoad() {
     super.viewDidLoad()
