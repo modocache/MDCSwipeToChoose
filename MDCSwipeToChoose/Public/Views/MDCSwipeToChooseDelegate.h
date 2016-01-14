@@ -27,10 +27,12 @@
 - (void)viewDidCancelSwipe:(UIView *)view;
 
 /*!
- * Sent before a choice is made. Return `NO` to prevent the choice from being made,
- * and `YES` otherwise.
+ * Sent before a choice is made. Return `no` to prevent the choice from being made,
+ * and `yes` otherwise.
  */
-- (BOOL)view:(UIView *)view shouldBeChosenWithDirection:(MDCSwipeDirection)direction;
+- (void)view:(UIView *)view shouldBeChosenWithDirection:(MDCSwipeDirection)direction
+         yes:(void (^)(void))yes
+          no:(void (^)(void))no;
 
 /*!
  * Sent after a choice is made. When using the default `MDCSwipeOptions`, the `view`
