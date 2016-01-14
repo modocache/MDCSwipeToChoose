@@ -203,7 +203,7 @@ static const CGFloat ChoosePersonButtonVerticalPadding = 20.f;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     UIImage *image = [UIImage imageNamed:@"nope"];
     button.frame = CGRectMake(ChoosePersonButtonHorizontalPadding,
-                              CGRectGetMaxY(self.backCardView.frame) + ChoosePersonButtonVerticalPadding,
+                              CGRectGetMaxY(self.frontCardView.frame) + ChoosePersonButtonVerticalPadding,
                               image.size.width,
                               image.size.height);
     [button setImage:image forState:UIControlStateNormal];
@@ -222,7 +222,7 @@ static const CGFloat ChoosePersonButtonVerticalPadding = 20.f;
     UIButton *button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
     UIImage *image = [UIImage imageNamed:@"liked"];
     button.frame = CGRectMake(CGRectGetMaxX(self.view.frame) - image.size.width - ChoosePersonButtonHorizontalPadding,
-                              CGRectGetMaxY(self.backCardView.frame) + ChoosePersonButtonVerticalPadding,
+                              CGRectGetMaxY(self.frontCardView.frame) + ChoosePersonButtonVerticalPadding,
                               image.size.width,
                               image.size.height);
     [button setImage:image forState:UIControlStateNormal];

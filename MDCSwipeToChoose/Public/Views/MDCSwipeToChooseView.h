@@ -35,7 +35,7 @@
 /*!
  * The main image to be displayed and then "liked" or "disliked".
  */
-@property (nonatomic, strong) UIImageView *imageView;
+@property (nonatomic, strong) UIView *contentView;
 
 /*!
  * The "liked" view, which fades in as the `MDCSwipeToChooseView` is panned to the right.
