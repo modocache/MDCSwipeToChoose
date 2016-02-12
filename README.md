@@ -169,7 +169,7 @@ func view(view: UIView, wasChosenWithDirection: MDCSwipeDirection) -> Void{
 }
 
 ```
-If you're using Cocoapods 0.36+ (perhaps because you want to include pods that contain Swift code) and you've included the use_frameworks! directive in your Podfile, then you've converted all your pods (including MDCSwipeToChoose) into frameworks. Therefore, you'll need to include the line
+If you're using CocoaPods 0.36+ (perhaps because you want to include pods that contain Swift code) and you've included the use_frameworks! directive in your Podfile, then you've converted all your pods (including MDCSwipeToChoose) into frameworks. Therefore, you'll need to include the line
 
 ```swift
 import MDCSwipeToChoose
