@@ -91,12 +91,6 @@ The following is an example of how you can use `MDCSwipeToChooseView` to display
 }
 ```
 
-As of version 0.2.0, you may also swipe a view programmatically:
-
-```objc
-[self.swipeToChooseView mdc_swipe:MDCSwipeDirectionLeft];
-```
-
 #### Swift
 
 To use objective-c code from swift, you need to use bridging-header.
@@ -281,10 +275,33 @@ func view(view: UIView, wasChosenWithDirection: MDCSwipeDirection) -> Void{
 
 ```
 
+### Swiping programmatically
 As of version 0.2.0, you may also swipe a view programmatically:
 
+#### Objective-C
 ```objc
 self.swipeToChooseView(mdc_swipe:MDCSwipeDirection.Left)
+[self.swipeToChooseView mdc_swipe:MDCSwipeDirectionLeft];
+```
+
+#### Swift
+```swift
+self.swipeToChooseView.mdc_swipe(.Left)
+```
+
+### Disable swiping gesture
+You may also disable the swiping gesture and only allowed to swipe programmatically
+
+#### Objective-C
+```objc
+MDCSwipeToChooseViewOptions *options = [MDCSwipeToChooseViewOptions new];
+options.swipeEnabled = NO;
+```
+
+#### Swift
+```swift
+var options = MDCSwipeToChooseViewOptions()
+options.swipeEnabled = false
 ```
 
 

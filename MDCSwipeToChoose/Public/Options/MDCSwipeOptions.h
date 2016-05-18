@@ -107,6 +107,12 @@ typedef void (^MDCSwipeToChooseOnCancelBlock)(UIView *swipedView);
 @property (nonatomic, copy) MDCSwipeToChooseOnCancelBlock onCancel;
 
 /*!
+ * By default, user should be allowed to use gesture to swipe the view.
+ * By disable this property, user can only swipe the view programmatically
+ */
+@property (nonatomic, assign) BOOL swipeEnabled;
+
+/*!
  * The default callback for when a view is swiped an chosen. This callback moves the view
  * outside of the bounds of its parent view, then removes it from the view hierarchy.
  */

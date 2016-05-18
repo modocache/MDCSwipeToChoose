@@ -99,4 +99,10 @@
  */
 @property (nonatomic, copy) MDCSwipeToChooseOnPanBlock onPan;
 
+/*!
+ * By default, user should be allowed to use gesture to swipe the view.
+ * By disable this property, user can only swipe the view programmatically
+ */
+@property (nonatomic, assign) BOOL swipeEnabled;
+
 @end
