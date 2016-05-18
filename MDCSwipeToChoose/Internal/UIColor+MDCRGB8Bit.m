@@ -28,7 +28,7 @@
 
 #pragma mark - Public Interface
 
-+ (UIColor *)colorWith8BitRed:(CGFloat)red
++ (UIColor *)mdc_colorWith8BitRed:(CGFloat)red
                         green:(CGFloat)green
                          blue:(CGFloat)blue
                         alpha:(CGFloat)alpha {
