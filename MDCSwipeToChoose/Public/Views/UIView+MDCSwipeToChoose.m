@@ -88,13 +88,16 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
         return;
     }
     
-    CGRect currentRect = self.frame;
-    currentRect.origin = MDCCGPointAdd(currentRect.origin, translation);
+    //We aren't supposed to access self.frame while a transform is active
+    CGSize size = self.bounds.size;
+    CGRect currentRect = CGRectMake(self.center.x - (size.width/2), self.center.y - (size.height/2),
+                                    size.width, size.height);
     
     CGRect destination = MDCCGRectExtendedOutOfBounds(currentRect,
                                                       self.superview.bounds,
                                                       translation);
-    self.mdc_viewState.translation = MDCCGPointSubtract(destination.origin, self.frame.origin);
+    CGPoint difference = MDCCGPointSubtract(destination.origin, currentRect.origin);
+    self.mdc_viewState.translation = MDCCGPointAdd(translation, difference);
     
     [UIView animateWithDuration:duration
                           delay:0.0

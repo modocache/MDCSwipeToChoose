@@ -43,10 +43,25 @@ CGFloat MDCDegreesToRadians(const CGFloat degrees) {
 CGRect MDCCGRectExtendedOutOfBounds(const CGRect rect,
                                     const CGRect bounds,
                                     const CGPoint translation) {
+    
+    if (CGPointEqualToPoint(translation, CGPointZero)) {
+        @throw [NSException exceptionWithName:NSInvalidArgumentException
+                                       reason:@"Cannot extend rect with zero translation"
+                                     userInfo:nil];
+    }
+    
+    CGPoint increment = CGPointZero;
+    if (translation.x != 0) {
+        increment.x = (translation.x < 0) ? -1 : 1;
+    }
+    if (translation.y != 0) {
+        increment.y = (translation.y < 0) ? -1 : 1;
+    }
+    
     CGRect destination = rect;
     while (!CGRectIsNull(CGRectIntersection(bounds, destination))) {
-        destination = CGRectMake(CGRectGetMinX(destination) + translation.x,
-                                 CGRectGetMinY(destination) + translation.y,
+        destination = CGRectMake(CGRectGetMinX(destination) + increment.x,
+                                 CGRectGetMinY(destination) + increment.y,
                                  CGRectGetWidth(destination),
                                  CGRectGetHeight(destination));
     }
