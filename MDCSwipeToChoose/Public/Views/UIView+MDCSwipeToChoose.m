@@ -79,6 +79,36 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
                      completion:completion];
 }
 
+- (void)mdc_exitSuperviewFromCurrentTranslationWithDuration:(NSTimeInterval)duration
+                                                    options:(UIViewAnimationOptions)options
+                                                 completion:(void(^)(void))completion
+{
+    CGPoint translation = self.mdc_viewState.translation;
+    if (translation.x == 0) {
+        return;
+    }
+    
+    CGRect currentRect = self.frame;
+    currentRect.origin = MDCCGPointAdd(currentRect.origin, translation);
+    
+    CGRect destination = MDCCGRectExtendedOutOfBounds(currentRect,
+                                                      self.superview.bounds,
+                                                      translation);
+    self.mdc_viewState.translation = MDCCGPointSubtract(destination.origin, self.frame.origin);
+    
+    [UIView animateWithDuration:duration
+                          delay:0.0
+                        options:options
+                     animations:^{
+                         [self mdc_applyLayerTransform];
+                     } completion:^(BOOL finished) {
+                         if (finished) {
+                             [self removeFromSuperview];
+                             completion();
+                         }
+                     }];
+}
+
 #pragma mark - Internal Methods
 
 - (void)setMdc_options:(MDCSwipeOptions *)options {
