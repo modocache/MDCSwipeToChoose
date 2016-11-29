@@ -89,6 +89,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 65.f;
         self.likedView = [[UIView alloc] initWithFrame:frame];
         [self.likedView constructBorderedLabelWithText:self.options.likedText
                                                  color:self.options.likedColor
+                                                  font:self.options.likedFont
                                                  angle:self.options.likedRotationAngle];
     }
     self.likedView.alpha = 0.f;
@@ -111,6 +112,7 @@ static CGFloat const MDCSwipeToChooseViewLabelWidth = 65.f;
         self.nopeView = [[UIView alloc] initWithFrame:frame];
         [self.nopeView constructBorderedLabelWithText:self.options.nopeText
                                                 color:self.options.nopeColor
+                                                 font:self.options.nopeFont
                                                 angle:self.options.nopeRotationAngle];
     }
     self.nopeView.alpha = 0.f;
