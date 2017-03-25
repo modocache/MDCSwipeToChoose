@@ -38,8 +38,8 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
 - (void)mdc_swipeToChooseSetup:(MDCSwipeOptions *)options {
     self.mdc_options = options ? options : [MDCSwipeOptions new];
     self.mdc_viewState = [MDCViewState new];
-    self.mdc_viewState.originalCenter = self.center;
     self.mdc_viewState.originalTransform = self.layer.transform;
+    self.mdc_viewState.translation = CGPointZero;
 
     if (options.swipeEnabled) {
         [self mdc_setupPanGestureRecognizer];
@@ -60,9 +60,10 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
     void (^animations)(void) = ^{
         CGPoint translation = [self mdc_translationExceedingThreshold:self.mdc_options.threshold
                                                             direction:direction];
-        self.center = MDCCGPointAdd(self.center, translation);
-        [self mdc_rotateForTranslation:translation
-                     rotationDirection:MDCRotationAwayFromCenter];
+        
+        self.mdc_viewState.translation = translation;
+        self.mdc_viewState.rotationDirection = MDCRotationAwayFromCenter;
+        [self mdc_applyLayerTransform];
         [self mdc_executeOnPanBlockForTranslation:translation];
     };
 
@@ -76,6 +77,39 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
                         options:self.mdc_options.swipeAnimationOptions
                      animations:animations
                      completion:completion];
+}
+
+- (void)mdc_exitSuperviewFromCurrentTranslationWithDuration:(NSTimeInterval)duration
+                                                    options:(UIViewAnimationOptions)options
+                                                 completion:(void(^)(void))completion
+{
+    CGPoint translation = self.mdc_viewState.translation;
+    if (translation.x == 0) {
+        return;
+    }
+    
+    //We aren't supposed to access self.frame while a transform is active
+    CGSize size = self.bounds.size;
+    CGRect currentRect = CGRectMake(self.center.x - (size.width/2), self.center.y - (size.height/2),
+                                    size.width, size.height);
+    
+    CGRect destination = MDCCGRectExtendedOutOfBounds(currentRect,
+                                                      self.superview.bounds,
+                                                      translation);
+    CGPoint difference = MDCCGPointSubtract(destination.origin, currentRect.origin);
+    self.mdc_viewState.translation = MDCCGPointAdd(translation, difference);
+    
+    [UIView animateWithDuration:duration
+                          delay:0.0
+                        options:options
+                     animations:^{
+                         [self mdc_applyLayerTransform];
+                     } completion:^(BOOL finished) {
+                         if (finished) {
+                             [self removeFromSuperview];
+                             completion();
+                         }
+                     }];
 }
 
 #pragma mark - Internal Methods
@@ -123,9 +157,7 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
     switch (direction) {
         case MDCSwipeDirectionRight:
         case MDCSwipeDirectionLeft: {
-            CGPoint translation = MDCCGPointSubtract(self.center,
-                                                     self.mdc_viewState.originalCenter);
-            [self mdc_exitSuperviewFromTranslation:translation];
+            [self mdc_exitSuperviewFromTranslation:self.mdc_viewState.translation];
             break;
         }
         case MDCSwipeDirectionNone:
@@ -141,7 +173,6 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
                         options:self.mdc_options.swipeCancelledAnimationOptions
                      animations:^{
                          self.layer.transform = self.mdc_viewState.originalTransform;
-                         self.center = self.mdc_viewState.originalCenter;
                      } completion:^(BOOL finished) {
                          id<MDCSwipeToChooseDelegate> delegate = self.mdc_options.delegate;
                          if ([delegate respondsToSelector:@selector(viewDidCancelSwipe:)]) {
@@ -153,24 +184,27 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
 - (void)mdc_exitSuperviewFromTranslation:(CGPoint)translation {
     MDCSwipeDirection direction = [self mdc_directionOfExceededThreshold];
     id<MDCSwipeToChooseDelegate> delegate = self.mdc_options.delegate;
+    void (^onChoose)(void) = ^ {
+        MDCSwipeResult *state = [MDCSwipeResult new];
+        state.view = self;
+        state.translation = translation;
+        state.direction = direction;
+        state.onCompletion = ^{
+            if ([delegate respondsToSelector:@selector(view:wasChosenWithDirection:)]) {
+                [delegate view:self wasChosenWithDirection:direction];
+            }
+        };
+        self.mdc_options.onChosen(state);
+    };
     if ([delegate respondsToSelector:@selector(view:shouldBeChosenWithDirection:yes:no:)]) {
-        [delegate view:self shouldBeChosenWithDirection:direction yes:^{
-            MDCSwipeResult *state = [MDCSwipeResult new];
-            state.view = self;
-            state.translation = translation;
-            state.direction = direction;
-            state.onCompletion = ^{
-                if ([delegate respondsToSelector:@selector(view:wasChosenWithDirection:)]) {
-                    [delegate view:self wasChosenWithDirection:direction];
-                }
-            };
-            self.mdc_options.onChosen(state);
-        } no:^{
+        [delegate view:self shouldBeChosenWithDirection:direction yes:onChoose no:^{
             [self mdc_returnToOriginalCenter];
             if (self.mdc_options.onCancel != nil){
                 self.mdc_options.onCancel(self);
             }
         }];
+    } else {
+        onChoose();
     }
 }
 
@@ -193,12 +227,16 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
     }
 }
 
-#pragma mark Rotation
-
-- (void)mdc_rotateForTranslation:(CGPoint)translation
-               rotationDirection:(MDCRotationDirection)rotationDirection {
+- (void)mdc_applyLayerTransform {
+    CATransform3D t = self.mdc_viewState.originalTransform;
+    
+    CGPoint translation = self.mdc_viewState.translation;
+    t = CATransform3DTranslate(t, translation.x, translation.y, 0);
+    
     CGFloat rotation = MDCDegreesToRadians(translation.x/100 * self.mdc_options.rotationFactor);
-    self.layer.transform = CATransform3DMakeRotation(rotationDirection * rotation, 0.0, 0.0, 1.0);
+    t = CATransform3DRotate(t, self.mdc_viewState.rotationDirection * rotation, 0, 0, 1);
+    
+    self.layer.transform = t;
 }
 
 #pragma mark Threshold
@@ -221,9 +259,9 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
 }
 
 - (MDCSwipeDirection)mdc_directionOfExceededThreshold {
-    if (self.center.x > self.mdc_viewState.originalCenter.x + self.mdc_options.threshold) {
+    if (self.mdc_viewState.translation.x > self.mdc_options.threshold) {
         return MDCSwipeDirectionRight;
-    } else if (self.center.x < self.mdc_viewState.originalCenter.x - self.mdc_options.threshold) {
+    } else if (self.mdc_viewState.translation.x < -self.mdc_options.threshold) {
         return MDCSwipeDirectionLeft;
     } else {
         return MDCSwipeDirectionNone;
@@ -236,8 +274,8 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
     UIView *view = panGestureRecognizer.view;
 
     if (panGestureRecognizer.state == UIGestureRecognizerStateBegan) {
-        self.mdc_viewState.originalCenter = view.center;
         self.mdc_viewState.originalTransform = view.layer.transform;
+        self.mdc_viewState.translation = CGPointZero;
 
         // If the pan gesture originated at the top half of the view, rotate the view
         // away from the center. Otherwise, rotate towards the center.
@@ -254,11 +292,9 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
     } else {
         // Update the position and transform. Then, notify any listeners of
         // the updates via the pan block.
-        CGPoint translation = [panGestureRecognizer translationInView:view];
-        view.center = MDCCGPointAdd(self.mdc_viewState.originalCenter, translation);
-        [self mdc_rotateForTranslation:translation
-                     rotationDirection:self.mdc_viewState.rotationDirection];
-        [self mdc_executeOnPanBlockForTranslation:translation];
+        self.mdc_viewState.translation = [panGestureRecognizer translationInView:view];
+        [self mdc_applyLayerTransform];
+        [self mdc_executeOnPanBlockForTranslation:self.mdc_viewState.translation];
     }
 }
 

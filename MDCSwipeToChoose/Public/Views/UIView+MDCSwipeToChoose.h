@@ -58,4 +58,13 @@
  */
 - (void)mdc_swipe:(MDCSwipeDirection)direction;
 
+/*!
+ * Continue animating the view in the direction it has been swiped, until
+ * it is completely out of bounds. Then remove it from the view hierarchy.
+ *
+ * This is a low-level method intended to be called as part of an onChosen block.
+ */
+- (void)mdc_exitSuperviewFromCurrentTranslationWithDuration:(NSTimeInterval)duration
+                                                    options:(UIViewAnimationOptions)options
+                                                 completion:(void(^)(void))completion;
 @end

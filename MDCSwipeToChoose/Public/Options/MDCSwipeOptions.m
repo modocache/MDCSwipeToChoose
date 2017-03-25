@@ -51,21 +51,9 @@
 + (MDCSwipeToChooseOnChosenBlock)exitScreenOnChosenWithDuration:(NSTimeInterval)duration
                                                         options:(UIViewAnimationOptions)options {
     return ^(MDCSwipeResult *state) {
-        CGRect destination = MDCCGRectExtendedOutOfBounds(state.view.frame,
-                                                          state.view.superview.bounds,
-                                                          state.translation);
-        [UIView animateWithDuration:duration
-                              delay:0.0
-                            options:options
-                         animations:^{
-                             state.view.center = CGPointMake(CGRectGetMidX(destination),
-                                                             CGRectGetMidY(destination));
-                         } completion:^(BOOL finished) {
-                             if (finished) {
-                                 [state.view removeFromSuperview];
-                                 state.onCompletion();
-                             }
-                         }];
+        [state.view mdc_exitSuperviewFromCurrentTranslationWithDuration:duration
+                                                                options:options
+                                                             completion:state.onCompletion];
     };
 }
 
