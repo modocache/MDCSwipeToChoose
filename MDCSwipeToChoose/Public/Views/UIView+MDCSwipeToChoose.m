@@ -28,6 +28,8 @@
 #import "MDCGeometry.h"
 #import <objc/runtime.h>
 
+#define HAS_OPT(options, opt) ((options & opt) == opt)
+
 const void * const MDCSwipeOptionsKey = &MDCSwipeOptionsKey;
 const void * const MDCViewStateKey = &MDCViewStateKey;
 
@@ -121,6 +123,8 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
 
 - (void)mdc_finalizePositionForDirection:(MDCSwipeDirection)direction {
     switch (direction) {
+        case MDCSwipeDirectionUp:
+        case MDCSwipeDirectionDown:
         case MDCSwipeDirectionRight:
         case MDCSwipeDirectionLeft: {
             CGPoint translation = MDCCGPointSubtract(self.center,
@@ -221,10 +225,16 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
 }
 
 - (MDCSwipeDirection)mdc_directionOfExceededThreshold {
-    if (self.center.x > self.mdc_viewState.originalCenter.x + self.mdc_options.threshold) {
+    MDCSwipeDirection directions = [self mdc_options].allowedSwipeDirections;
+    
+    if (HAS_OPT(directions, MDCSwipeDirectionRight) && self.center.x > self.mdc_viewState.originalCenter.x + self.mdc_options.threshold) {
         return MDCSwipeDirectionRight;
-    } else if (self.center.x < self.mdc_viewState.originalCenter.x - self.mdc_options.threshold) {
+    } else if (HAS_OPT(directions, MDCSwipeDirectionLeft) && self.center.x < self.mdc_viewState.originalCenter.x - self.mdc_options.threshold) {
         return MDCSwipeDirectionLeft;
+    } else if (HAS_OPT(directions, MDCSwipeDirectionUp) && self.center.y < self.mdc_viewState.originalCenter.y - self.mdc_options.threshold) {
+        return MDCSwipeDirectionUp;
+    } else if (HAS_OPT(directions, MDCSwipeDirectionDown) && self.center.y > self.mdc_viewState.originalCenter.y + self.mdc_options.threshold) {
+        return MDCSwipeDirectionDown;
     } else {
         return MDCSwipeDirectionNone;
     }
