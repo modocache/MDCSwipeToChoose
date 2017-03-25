@@ -30,6 +30,7 @@
 
 - (void)constructBorderedLabelWithText:(NSString *)text
                                  color:(UIColor *)color
+                                  font:(UIFont *)font
                                  angle:(CGFloat)angle {
     self.layer.borderColor = color.CGColor;
     self.layer.borderWidth = 5.f;
@@ -38,8 +39,8 @@
     UILabel *label = [[UILabel alloc] initWithFrame:self.bounds];
     label.text = [text uppercaseString];
     label.textAlignment = NSTextAlignmentCenter;
-    label.font = [UIFont fontWithName:@"HelveticaNeue-CondensedBlack"
-                                 size:48.f];
+    label.font = font;
+
     label.textColor = color;
     [self addSubview:label];
 

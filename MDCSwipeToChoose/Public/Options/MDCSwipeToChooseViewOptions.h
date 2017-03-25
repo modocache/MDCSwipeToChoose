@@ -49,6 +49,12 @@
 @property (nonatomic, strong) UIColor *likedColor;
 
 /*!
+ * The font of the text of the `likedView`. A default value is provided in the
+ * `-init` method.
+ */
+@property (nonatomic, strong) UIFont *likedFont;
+
+/*!
  * The image used to displayed in the `likeView`. If this is present, it will take
  * precedence over the likeText
  */
@@ -71,6 +77,12 @@
  * `-init` method.
  */
 @property (nonatomic, strong) UIColor *nopeColor;
+
+/*!
+ * The font of the text of the `nopeView`. A default value is provided in the
+ * `-init` method.
+ */
+@property (nonatomic, strong) UIFont *nopeFont;
 
 /*!
  * The image used to displayed in the `nopeView`. If this is present, it will take

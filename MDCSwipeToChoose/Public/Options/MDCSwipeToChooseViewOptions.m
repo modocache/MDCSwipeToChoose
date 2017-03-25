@@ -32,10 +32,12 @@
     if (self) {
         _likedText = [NSLocalizedString(@"liked", nil) uppercaseString];
         _likedColor = [UIColor mdc_colorWith8BitRed:29.f green:245.f blue:106.f alpha:1.f];
+        _likedFont = [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:48.f];
         _likedRotationAngle = -15.f;
 
         _nopeText = [NSLocalizedString(@"nope", nil) uppercaseString];
         _nopeColor = [UIColor mdc_colorWith8BitRed:247.f green:91.f blue:37.f alpha:1.f];
+        _nopeFont = [UIFont fontWithName:@"HelveticaNeue-CondensedBlack" size:48.f];
         _nopeRotationAngle = 15.f;
 
         _threshold = 100.f;
