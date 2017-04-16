@@ -58,7 +58,7 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
     // Moves the view to the minimum point exceeding the threshold.
     // Transforms and executes pan callbacks as well.
     void (^animations)(void) = ^{
-        CGPoint translation = [self mdc_translationExceedingThreshold:self.mdc_options.threshold
+        CGPoint translation = [self mdc_translationExceedingThreshold:self.mdc_options.threshold*1.25f
                                                             direction:direction];
         self.center = MDCCGPointAdd(self.center, translation);
         [self mdc_rotateForTranslation:translation
