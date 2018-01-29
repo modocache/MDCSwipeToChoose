@@ -40,4 +40,11 @@
  */
 - (void)view:(UIView *)view wasChosenWithDirection:(MDCSwipeDirection)direction;
 
+//MARK:- Change By SimformSolutions, To send the current position of view to controller
+
+/*!
+ * Sent the view point to controller.
+ * send when user move the view
+ */
+-(void)view:(UIView *)view wasChosenWithPosition:(CGPoint)points;
 @end
