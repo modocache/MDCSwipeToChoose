@@ -234,7 +234,10 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
 
 - (void)mdc_onSwipeToChoosePanGestureRecognizer:(UIPanGestureRecognizer *)panGestureRecognizer {
     UIView *view = panGestureRecognizer.view;
-
+    
+//MARK:- Change By SimformSolutions, To send the current position of view to controller
+    [self mdc_onSwipeingWithPosition:view.frame.origin];
+    
     if (panGestureRecognizer.state == UIGestureRecognizerStateBegan) {
         self.mdc_viewState.originalCenter = view.center;
         self.mdc_viewState.originalTransform = view.layer.transform;
@@ -260,6 +263,14 @@ const void * const MDCViewStateKey = &MDCViewStateKey;
                      rotationDirection:self.mdc_viewState.rotationDirection];
         [self mdc_executeOnPanBlockForTranslation:translation];
     }
+}
+
+-(void)mdc_onSwipeingWithPosition:(CGPoint)point {
+    id<MDCSwipeToChooseDelegate> delegate = self.mdc_options.delegate;
+    if ([delegate respondsToSelector:@selector(view:wasChosenWithPosition:)]) {
+        [delegate view:self wasChosenWithPosition:point];
+    }
+    
 }
 
 @end
